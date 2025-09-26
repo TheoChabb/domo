@@ -7,10 +7,16 @@
     body { font-family: Arial; text-align: center; margin-top: 100px; }
     input { display: block; margin: 10px auto; padding: 10px; width: 200px; }
     button { padding: 10px 20px; }
+    #error-message {
+      color: red;
+      margin-top: 10px;
+      font-weight: bold;
+    }
   </style>
 </head>
 <body>
   <h2>Connexion</h2>
+  <div id="error-message"></div>
   <input type="email" id="email" placeholder="Email">
   <input type="password" id="password" placeholder="Mot de passe">
   <button id="loginBtn">Se connecter</button>
@@ -20,15 +26,15 @@
   <script src="https://www.gstatic.com/firebasejs/10.14.0/firebase-auth-compat.js"></script>
 
   <script>
-  const firebaseConfig = {
-    apiKey: "AIzaSyC9npt7PuRmlNUcPSFQbhQL5lkT3rejNKQ",
-    authDomain: "securisation-domotique.firebaseapp.com",
-    projectId: "securisation-domotique",
-    storageBucket: "securisation-domotique.firebasestorage.app",
-    messagingSenderId: "493865233555",
-    appId: "1:493865233555:web:25f2adb612c3b98da9b166",
-    measurementId: "G-F4KHR48KZR"
-  };
+    const firebaseConfig = {
+      apiKey: "AIzaSyC9npt7PuRmlNUcPSFQbhQL5lkT3rejNKQ",
+      authDomain: "securisation-domotique.firebaseapp.com",
+      projectId: "securisation-domotique",
+      storageBucket: "securisation-domotique.appspot.com",
+      messagingSenderId: "493865233555",
+      appId: "1:493865233555:web:25f2adb612c3b98da9b166",
+      measurementId: "G-F4KHR48KZR"
+    };
 
     firebase.initializeApp(firebaseConfig);
     const auth = firebase.auth();
@@ -36,13 +42,32 @@
     function login() {
       const email = document.getElementById("email").value;
       const password = document.getElementById("password").value;
+      const errorDiv = document.getElementById("error-message");
+      errorDiv.textContent = ""; // reset avant nouvelle tentative
 
       auth.signInWithEmailAndPassword(email, password)
         .then(() => {
           window.location.href = "index.html";
         })
         .catch(error => {
-          alert("Erreur : " + error.message);
+          let message = "";
+          switch (error.code) {
+            case "auth/invalid-email":
+              message = "Adresse e-mail invalide.";
+              break;
+            case "auth/user-disabled":
+              message = "Ce compte a été désactivé.";
+              break;
+            case "auth/user-not-found":
+              message = "Aucun utilisateur trouvé avec cet e-mail.";
+              break;
+            case "auth/wrong-password":
+              message = "Mot de passe incorrect.";
+              break;
+            default:
+              message = "Erreur : " + error.message;
+          }
+          errorDiv.textContent = message;
         });
     }
 
