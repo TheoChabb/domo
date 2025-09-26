@@ -20,18 +20,18 @@
   <script src="https://www.gstatic.com/firebasejs/10.14.0/firebase-auth-compat.js"></script>
 
   <script>
-    // ⚠️ Mets tes vraies infos Firebase ici
     const firebaseConfig = {
       apiKey: "AIzaSyC9npt7PuRmlNUcPSFQbhQL5lkT3rejNKQ",
       authDomain: "securisation-domotique.firebaseapp.com",
       projectId: "securisation-domotique",
+      storageBucket: "securisation-domotique.appspot.com",
+      messagingSenderId: "493865233555",
+      appId: "1:493865233555:web:TON_APP_ID_ICI"
     };
 
-    // Initialiser Firebase
     firebase.initializeApp(firebaseConfig);
-    const auth = firebase.auth(); // ✅ défini avant toute fonction
+    const auth = firebase.auth();
 
-    // Fonction login
     function login() {
       const email = document.getElementById("email").value;
       const password = document.getElementById("password").value;
@@ -45,14 +45,12 @@
         });
     }
 
-    // Vérifie si déjà connecté
     auth.onAuthStateChanged(user => {
       if (user) {
         window.location.href = "index.html";
       }
     });
 
-    // ✅ Attacher l’event après que tout est chargé
     document.getElementById("loginBtn").addEventListener("click", login);
   </script>
 </body>
