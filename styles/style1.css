@@ -42,7 +42,7 @@ body {
     font-weight: bold;
     text-align: left;
     margin-top: 15px;
-    left: 25px;
+    left: -25%;
 }
 
 .div_formulaire input {
