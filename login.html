@@ -15,35 +15,37 @@
   <input type="password" id="password" placeholder="Mot de passe">
   <button onclick="login()">Se connecter</button>
 
-  <!-- Firebase -->
-  <script src="https://www.gstatic.com/firebasejs/10.14.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.14.0/firebase-auth.js"></script>
+  <!-- Firebase compat -->
+  <script src="https://www.gstatic.com/firebasejs/10.14.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.0/firebase-auth-compat.js"></script>
 
   <script>
-    // Config Firebase
     const firebaseConfig = {
-      apiKey: "AIzaSyC9npt7PuRmlNUcPSFQbhQL5lkT3rejNKQ",
-      authDomain: "securisation-domotique.firebaseapp.com",
-      projectId: "securisation-domotique",
+      apiKey: "TON_API_KEY",
+      authDomain: "TON_PROJECT_ID.firebaseapp.com",
+      projectId: "TON_PROJECT_ID",
     };
 
-    // Initialiser Firebase
     firebase.initializeApp(firebaseConfig);
     const auth = firebase.auth();
 
-    // Login
     function login() {
       const email = document.getElementById("email").value;
       const password = document.getElementById("password").value;
 
       auth.signInWithEmailAndPassword(email, password)
-        .then(() => { window.location.href = "index.html"; })
-        .catch(error => { alert(error.message); });
+        .then(() => {
+          window.location.href = "index.html";
+        })
+        .catch(error => {
+          alert("Erreur : " + error.message);
+        });
     }
 
-    // Si déjà connecté, redirige vers index
     auth.onAuthStateChanged(user => {
-      if (user) { window.location.href = "index.html"; }
+      if (user) {
+        window.location.href = "index.html";
+      }
     });
   </script>
 </body>
