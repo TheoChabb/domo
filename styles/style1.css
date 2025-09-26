@@ -70,6 +70,7 @@ body {
 }
 
 .div_formulaire .erreur {
+    text-align: center;
     color: red;
     margin: 10px 0;
     text-align: center;
