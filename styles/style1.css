@@ -1,1 +1,26 @@
+:root {
+    --bg: #e7e7e7;
+    --bg-bandeau: #0091d4;
+    --text-bandeau: #fff;
+    --bg-menu: #007db8;
+    --text-widjet: #0091d4;
+    --text-widjet2: #fff;
+    --bg-widjet: #fff;
+    --height-bandeau: 13%;
+    --height-h1: -15%;
+    --width-menu: 15%;
+    --bg-button: #e7e7e7;
+    --button: black;
+}
 
+.div_formulaire {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20%;
+    height: 40%;
+    background-color: var(--bg-widjet);
+    border-radius: 10px;
+    border: 3px solid var(--text-widjet);
+}
