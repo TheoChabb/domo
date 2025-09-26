@@ -76,7 +76,7 @@ body {
 }
 
 @media all and (max-width: 1000px) {
-    .div_formulaire {
-        background-color: black;
+    *{
+        font-size: 150%;
     }
 }
