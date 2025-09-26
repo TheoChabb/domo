@@ -38,11 +38,12 @@ body {
 }
 
 .div_formulaire label {
+    color: var(--text-widjet);
     font-weight: bold;
     text-align: left;
     position: relative;
-    margin-top: 8px;
-    left: -30%;
+    margin-top: 16px;
+    left: -25%;
 }
 
 .div_formulaire input {
