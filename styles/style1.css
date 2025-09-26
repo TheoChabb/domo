@@ -32,7 +32,7 @@ body {
     border: 3px solid var(--text-widjet);
 }
 
-.div_formulaire label {
+.div_formulaire h2 {
     color: var(--text-widjet);
     text-align: center;
 }
@@ -41,7 +41,8 @@ body {
     font-weight: bold;
     text-align: left;
     position: relative;
-    left: -25%;
+    margin-top: 8px;
+    left: -30%;
 }
 
 .div_formulaire input {
