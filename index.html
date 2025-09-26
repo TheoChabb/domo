@@ -44,7 +44,6 @@
     function logout() {
       auth.signOut()
         .then(() => {
-          alert("Déconnecté avec succès !");
           window.location.href = "login.html";
         })
         .catch(error => {
