@@ -34,6 +34,7 @@ body {
 
 .div_formulaire label {
     color: var(--text-widjet);
+    text-align: center;
 }
 
 .div_formulaire label {
