@@ -26,6 +26,40 @@
   <script src="https://www.gstatic.com/firebasejs/10.14.0/firebase-auth-compat.js"></script>
 
   <script>
+// Fonction utilitaire pour transformer une erreur Firebase en message utilisateur
+function handleAuthError(error) {
+  // Log complet dans la console pour débogage
+  console.error("Firebase Auth error:", error);
+
+  // Normalise le code d'erreur : "auth/wrong-password" -> "wrong-password"
+  let code = "";
+  if (error && error.code) {
+    const parts = String(error.code).split("/");
+    code = parts.length > 1 ? parts[1] : parts[0];
+    code = code.replace(/[^a-z0-9\-]/ig, "").toLowerCase();
+  }
+
+  // Dictionnaire de traductions / messages amicaux
+  const messages = {
+    "invalid-email": "Adresse e-mail invalide.",
+    "missing-email": "Adresse e-mail manquante.",
+    "user-disabled": "Ce compte a été désactivé.",
+    "user-not-found": "Aucun utilisateur trouvé avec cet e-mail.",
+    "wrong-password": "Mot de passe incorrect.",
+    "too-many-requests": "Trop de tentatives. Réessaie plus tard.",
+    "network-request-failed": "Problème réseau — vérifie ta connexion.",
+    "invalid-credential": "Identifiants invalides.",
+    "operation-not-allowed": "Méthode d'authentification désactivée (voir Firebase).",
+    "internal-error": "Erreur interne. Réessaie plus tard.",
+    "email-already-in-use": "Cet e-mail est déjà utilisé.",
+    "weak-password": "Mot de passe trop faible (min 6 caractères)."
+  };
+
+  // Choix du message : mapping ou message renvoyé par Firebase sinon
+  return messages[code] || (error && error.message) || "Erreur inconnue, consulte la console.";
+}
+
+    
     const firebaseConfig = {
       apiKey: "AIzaSyC9npt7PuRmlNUcPSFQbhQL5lkT3rejNKQ",
       authDomain: "securisation-domotique.firebaseapp.com",
@@ -50,25 +84,22 @@
           window.location.href = "index.html";
         })
         .catch(error => {
-          let message = "";
-          switch (error.code) {
-            case "auth/invalid-email":
-              message = "Adresse e-mail invalide.";
-              break;
-            case "auth/user-disabled":
-              message = "Ce compte a été désactivé.";
-              break;
-            case "auth/user-not-found":
-              message = "Aucun utilisateur trouvé avec cet e-mail.";
-              break;
-            case "auth/wrong-password":
-              message = "Mot de passe incorrect.";
-              break;
-            default:
-              message = "Erreur : " + error.message;
-          }
-          errorDiv.textContent = message;
-        });
+  // Récupère la zone d'affichage (assure-toi qu'elle existe dans ton HTML)
+  const errorDiv = document.getElementById("error-message");
+  if (errorDiv) {
+    errorDiv.textContent = handleAuthError(error);
+  } else {
+    // fallback si pas de div (évite crash silencieux)
+    console.warn("Element #error-message introuvable — message:", handleAuthError(error));
+  }
+
+  // Optionnel : focus sur le champ mot de passe si mauvais mot de passe
+  if (error && error.code && error.code.indexOf("wrong-password") !== -1) {
+    const pw = document.getElementById("password");
+    if (pw) pw.focus();
+  }
+});
+
     }
 
     auth.onAuthStateChanged(user => {
