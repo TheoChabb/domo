@@ -15,7 +15,7 @@
 
 body {
     font-family: Arial, sans-serif;
-    text-align: center;
+    text-align: left;
     background-color: var(--bg);
     overflow: hidden;
 }
