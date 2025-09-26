@@ -5,11 +5,12 @@
   <title>Accueil</title>
   <style>
     body { font-family: Arial; text-align: center; margin-top: 100px; }
-    button { padding: 10px 20px; }
+    button { padding: 10px 20px; margin-top: 20px; }
   </style>
 </head>
 <body>
   <h1>Bienvenue sur votre site sécurisé !</h1>
+  <p id="user-info"></p>
   <button onclick="logout()">Se déconnecter</button>
 
   <!-- Firebase -->
@@ -17,22 +18,40 @@
   <script src="https://www.gstatic.com/firebasejs/10.14.0/firebase-auth.js"></script>
 
   <script>
+    // ⚠️ Mets bien tes vraies infos Firebase ici
     const firebaseConfig = {
-      apiKey: "AIzaSyC9npt7PuRmlNUcPSFQbhQL5lkT3rejNKQ",
-      authDomain: "securisation-domotique.firebaseapp.com",
-      projectId: "securisation-domotique",
+      apiKey: "TON_API_KEY",
+      authDomain: "TON_PROJECT_ID.firebaseapp.com",
+      projectId: "TON_PROJECT_ID",
     };
 
-    firebase.initializeApp(firebaseConfig);
+    // Initialiser Firebase seulement si pas déjà fait
+    if (!firebase.apps.length) {
+      firebase.initializeApp(firebaseConfig);
+    }
+
     const auth = firebase.auth();
 
-    // Vérifier connexion
+    // Vérifie si connecté
     auth.onAuthStateChanged(user => {
-      if (!user) { window.location.href = "login.html"; }
+      if (!user) {
+        // Pas connecté → retour au login
+        window.location.href = "login.html";
+      } else {
+        // Afficher email de l’utilisateur
+        document.getElementById("user-info").innerText =
+          "Connecté en tant que : " + user.email;
+      }
     });
 
+    // Déconnexion
     function logout() {
-      auth.signOut().then(() => { window.location.href = "login.html"; });
+      auth.signOut().then(() => {
+        alert("Déconnecté avec succès !");
+        window.location.href = "login.html";
+      }).catch(error => {
+        alert("Erreur : " + error.message);
+      });
     }
   </script>
 </body>
