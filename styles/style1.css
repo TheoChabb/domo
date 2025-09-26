@@ -41,9 +41,7 @@ body {
     color: var(--text-widjet);
     font-weight: bold;
     text-align: left;
-    position: relative;
-    margin-top: 16px;
-    left: -25%;
+    margin-top: 15px;
 }
 
 .div_formulaire input {
