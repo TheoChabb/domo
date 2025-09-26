@@ -73,3 +73,9 @@ body {
     text-align: center;
     font-weight: bold;
 }
+
+@media all and (max-width: 1000px) {
+    .div_formulaire {
+        background-color: black;
+    }
+}
