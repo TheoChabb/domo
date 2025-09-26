@@ -38,3 +38,10 @@
     margin-bottom: 8px;
     width: 90%;
 }
+
+.div_formulaire .erreur {
+    color: red;
+    margin: 10px 0;
+    text-align: center;
+    font-weight: bold;
+}
