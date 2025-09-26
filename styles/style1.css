@@ -77,4 +77,8 @@ body {
     *{
         font-size: 150%;
     }
+
+    .div_formulaire {
+        width: 80%;
+    }
 }
