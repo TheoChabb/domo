@@ -11,21 +11,22 @@
 <body>
   <h1>Bienvenue sur votre site sécurisé !</h1>
   <p id="user-info"></p>
-  <button onclick="logout()">Se déconnecter</button>
+  <button id="logoutBtn">Se déconnecter</button>
 
-  <!-- Firebase compat (⚠️ bien utiliser /compat/) -->
+  <!-- Firebase compat -->
   <script src="https://www.gstatic.com/firebasejs/10.14.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.14.0/firebase-auth-compat.js"></script>
 
   <script>
-    // ⚠️ Mets tes vraies infos Firebase ici
     const firebaseConfig = {
-      apiKey: "TON_API_KEY",
-      authDomain: "TON_PROJECT_ID.firebaseapp.com",
-      projectId: "TON_PROJECT_ID",
+      apiKey: "AIzaSyC9npt7PuRmlNUcPSFQbhQL5lkT3rejNKQ",
+      authDomain: "securisation-domotique.firebaseapp.com",
+      projectId: "securisation-domotique",
+      storageBucket: "securisation-domotique.appspot.com",
+      messagingSenderId: "493865233555",
+      appId: "1:493865233555:web:TON_APP_ID_ICI"
     };
 
-    // Initialiser Firebase
     firebase.initializeApp(firebaseConfig);
     const auth = firebase.auth();
 
@@ -39,7 +40,6 @@
       }
     });
 
-    // Déconnexion
     function logout() {
       auth.signOut()
         .then(() => {
@@ -50,6 +50,8 @@
           alert("Erreur : " + error.message);
         });
     }
+
+    document.getElementById("logoutBtn").addEventListener("click", logout);
   </script>
 </body>
 </html>
