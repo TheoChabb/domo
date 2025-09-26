@@ -13,32 +13,27 @@
   <p id="user-info"></p>
   <button onclick="logout()">Se déconnecter</button>
 
-  <!-- Firebase -->
-  <script src="https://www.gstatic.com/firebasejs/10.14.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.14.0/firebase-auth.js"></script>
+  <!-- Firebase compat (⚠️ bien utiliser /compat/) -->
+  <script src="https://www.gstatic.com/firebasejs/10.14.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.0/firebase-auth-compat.js"></script>
 
   <script>
-    // ⚠️ Mets bien tes vraies infos Firebase ici
+    // ⚠️ Mets tes vraies infos Firebase ici
     const firebaseConfig = {
       apiKey: "TON_API_KEY",
       authDomain: "TON_PROJECT_ID.firebaseapp.com",
       projectId: "TON_PROJECT_ID",
     };
 
-    // Initialiser Firebase seulement si pas déjà fait
-    if (!firebase.apps.length) {
-      firebase.initializeApp(firebaseConfig);
-    }
-
+    // Initialiser Firebase
+    firebase.initializeApp(firebaseConfig);
     const auth = firebase.auth();
 
     // Vérifie si connecté
     auth.onAuthStateChanged(user => {
       if (!user) {
-        // Pas connecté → retour au login
         window.location.href = "login.html";
       } else {
-        // Afficher email de l’utilisateur
         document.getElementById("user-info").innerText =
           "Connecté en tant que : " + user.email;
       }
@@ -46,12 +41,14 @@
 
     // Déconnexion
     function logout() {
-      auth.signOut().then(() => {
-        alert("Déconnecté avec succès !");
-        window.location.href = "login.html";
-      }).catch(error => {
-        alert("Erreur : " + error.message);
-      });
+      auth.signOut()
+        .then(() => {
+          alert("Déconnecté avec succès !");
+          window.location.href = "login.html";
+        })
+        .catch(error => {
+          alert("Erreur : " + error.message);
+        });
     }
   </script>
 </body>
