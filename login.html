@@ -13,22 +13,25 @@
   <h2>Connexion</h2>
   <input type="email" id="email" placeholder="Email">
   <input type="password" id="password" placeholder="Mot de passe">
-  <button onclick="login()">Se connecter</button>
+  <button id="loginBtn">Se connecter</button>
 
   <!-- Firebase compat -->
   <script src="https://www.gstatic.com/firebasejs/10.14.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.14.0/firebase-auth-compat.js"></script>
 
   <script>
+    // ⚠️ Mets tes vraies infos Firebase ici
     const firebaseConfig = {
       apiKey: "TON_API_KEY",
       authDomain: "TON_PROJECT_ID.firebaseapp.com",
       projectId: "TON_PROJECT_ID",
     };
 
+    // Initialiser Firebase
     firebase.initializeApp(firebaseConfig);
-    const auth = firebase.auth();
+    const auth = firebase.auth(); // ✅ défini avant toute fonction
 
+    // Fonction login
     function login() {
       const email = document.getElementById("email").value;
       const password = document.getElementById("password").value;
@@ -42,11 +45,15 @@
         });
     }
 
+    // Vérifie si déjà connecté
     auth.onAuthStateChanged(user => {
       if (user) {
         window.location.href = "index.html";
       }
     });
+
+    // ✅ Attacher l’event après que tout est chargé
+    document.getElementById("loginBtn").addEventListener("click", login);
   </script>
 </body>
 </html>
