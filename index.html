@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Accueil</title>
+  <style>
+    body { font-family: Arial; text-align: center; margin-top: 100px; }
+    button { padding: 10px 20px; }
+  </style>
+</head>
+<body>
+  <h1>Bienvenue sur votre site sécurisé !</h1>
+  <button onclick="logout()">Se déconnecter</button>
+
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/10.14.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.0/firebase-auth.js"></script>
+
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyC9npt7PuRmlNUcPSFQbhQL5lkT3rejNKQ",
+      authDomain: "securisation-domotique.firebaseapp.com",
+      projectId: "securisation-domotique",
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+
+    // Vérifier connexion
+    auth.onAuthStateChanged(user => {
+      if (!user) { window.location.href = "login.html"; }
+    });
+
+    function logout() {
+      auth.signOut().then(() => { window.location.href = "login.html"; });
+    }
+  </script>
+</body>
+</html>
