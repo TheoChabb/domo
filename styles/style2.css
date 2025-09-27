@@ -24,6 +24,6 @@ input[type="submit"] {
   border: none
 }
 
-.div_senMail {
+#div_senMail {
   display: none;
 }
