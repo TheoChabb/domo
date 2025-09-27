@@ -100,8 +100,7 @@ body {
         padding: 25px 15px;
     }
 
-    .div_formulaire input,
-    .div_formulaire button {
+    .div_formulaire input, .div_formulaire button {
         border: 3px solid #000;
         font-size: 1.1rem;
         padding: 12px;
