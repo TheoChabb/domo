@@ -1,0 +1,22 @@
+  body { font-family: Arial, sans-serif; text-align: center; margin: 40px; }
+  h1 { color: #2c3e50; }
+  button {
+    padding: 10px 20px;
+    margin: 10px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    color: white;
+  }
+  #logoutBtn { background: #e74c3c; }
+  #sendMailBtn { background: #3498db; }
+  #data {
+    margin-top: 30px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background: #f9f9f9;
+    display: inline-block;
+    text-align: left;
+    min-width: 250px;
+  }
