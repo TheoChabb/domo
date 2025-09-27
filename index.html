@@ -28,7 +28,7 @@ Si ce n'est pas vous contactez le support le plus rapidement possible ! </textar
     </div>
     <div class="field">
       <label for="email">email</label>
-      <input type="text" name="email" id="email">
+      <textarea type="text" name="email" id="email"></textarea>
     </div>
   
     <input type="submit" id="button" value="Send Email" >
@@ -99,6 +99,8 @@ document.getElementById('form')
       } else {
         document.getElementById("user-info").innerText =
           "Connecté en tant que : " + user.email;
+
+        document.getElementById("id").innerText = user.email;
       }
     });
 
