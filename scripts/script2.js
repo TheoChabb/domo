@@ -54,24 +54,3 @@
           dataDiv.innerHTML = "Erreur lors du chargement des données.";
         });
     }
-
-    // Bouton "Envoyer un mail"
-    document.getElementById("sendMailBtn").addEventListener("click", () => {
-      const user = auth.currentUser;
-      if (!user) {
-        alert("Utilisateur non connecté !");
-        return;
-      }
-
-      // Simuler l'envoi de mail (pour test)
-      alert("Mail envoyé à " + user.email + " (simulation)");
-
-      // ✅ Option réelle : si tu as une Cloud Function
-      /*
-      const sendMail = functions.httpsCallable('sendMailToUser');
-      sendMail({ subject: "Domotique", text: "Hello " + user.email })
-        .then(result => { alert("Mail envoyé !"); })
-        .catch(error => { alert("Erreur : " + error.message); });
-      */
-    });
-  </script>
