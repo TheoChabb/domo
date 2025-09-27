@@ -2,57 +2,124 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Accueil</title>
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <title>Tableau de bord domotique</title>
   <style>
-    body { font-family: Arial; text-align: center; margin-top: 100px; }
-    button { padding: 10px 20px; margin-top: 20px; }
+    body { font-family: Arial, sans-serif; text-align: center; margin: 40px; }
+    h1 { color: #2c3e50; }
+    button {
+      padding: 10px 20px;
+      margin: 10px;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+      color: white;
+    }
+    #logoutBtn { background: #e74c3c; }
+    #sendMailBtn { background: #3498db; }
+    #data {
+      margin-top: 30px;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      background: #f9f9f9;
+      display: inline-block;
+      text-align: left;
+      min-width: 250px;
+    }
   </style>
 </head>
 <body>
-  <h1>Bienvenue sur votre site sécurisé !</h1>
-  <p id="user-info"></p>
+  <h1>Bienvenue sur la page domotique 🔐</h1>
+  <p>Seuls les utilisateurs connectés peuvent voir ces données.</p>
+
+  <div id="data">Chargement des données...</div>
+
+  <button id="sendMailBtn">Envoyer un mail</button>
   <button id="logoutBtn">Se déconnecter</button>
 
   <!-- Firebase compat -->
   <script src="https://www.gstatic.com/firebasejs/10.14.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.14.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.0/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.0/firebase-functions-compat.js"></script>
 
   <script>
-  const firebaseConfig = {
-    apiKey: "AIzaSyC9npt7PuRmlNUcPSFQbhQL5lkT3rejNKQ",
-    authDomain: "securisation-domotique.firebaseapp.com",
-    projectId: "securisation-domotique",
-    storageBucket: "securisation-domotique.firebasestorage.app",
-    messagingSenderId: "493865233555",
-    appId: "1:493865233555:web:25f2adb612c3b98da9b166",
-    measurementId: "G-F4KHR48KZR"
-  };
+    // Config Firebase
+    const firebaseConfig = {
+      apiKey: "AIzaSyC9npt7PuRmlNUcPSFQbhQL5lkT3rejNKQ",
+      authDomain: "securisation-domotique.firebaseapp.com",
+      projectId: "securisation-domotique",
+      storageBucket: "securisation-domotique.appspot.com",
+      messagingSenderId: "493865233555",
+      appId: "1:493865233555:web:25f2adb612c3b98da9b166",
+      measurementId: "G-F4KHR48KZR"
+    };
 
+    // Init Firebase
     firebase.initializeApp(firebaseConfig);
     const auth = firebase.auth();
+    const db = firebase.firestore();
+    const functions = firebase.functions();
 
-    // Vérifie si connecté
+    const dataDiv = document.getElementById("data");
+
+    // Vérifie si l’utilisateur est connecté
     auth.onAuthStateChanged(user => {
       if (!user) {
         window.location.href = "login.html";
       } else {
-        document.getElementById("user-info").innerText =
-          "Connecté en tant que : " + user.email;
+        loadData(user);
       }
     });
 
-    function logout() {
-      auth.signOut()
-        .then(() => {
-          window.location.href = "login.html";
+    // Déconnexion
+    document.getElementById("logoutBtn").addEventListener("click", () => {
+      auth.signOut().then(() => {
+        window.location.href = "login.html";
+      });
+    });
+
+    // Chargement des données Firestore
+    function loadData(user) {
+      db.collection("capteurs").get()
+        .then(snapshot => {
+          if (snapshot.empty) {
+            dataDiv.innerHTML = "Aucune donnée trouvée.";
+            return;
+          }
+          let html = "<h3>Données des capteurs :</h3><ul>";
+          snapshot.forEach(doc => {
+            const d = doc.data();
+            html += `<li><b>${doc.id}</b> : ${JSON.stringify(d)}</li>`;
+          });
+          html += "</ul>";
+          dataDiv.innerHTML = html;
         })
         .catch(error => {
-          alert("Erreur : " + error.message);
+          console.error("Erreur Firestore:", error);
+          dataDiv.innerHTML = "Erreur lors du chargement des données.";
         });
     }
 
-    document.getElementById("logoutBtn").addEventListener("click", logout);
+    // Bouton "Envoyer un mail"
+    document.getElementById("sendMailBtn").addEventListener("click", () => {
+      const user = auth.currentUser;
+      if (!user) {
+        alert("Utilisateur non connecté !");
+        return;
+      }
+
+      // Simuler l'envoi de mail (pour test)
+      alert("Mail envoyé à " + user.email + " (simulation)");
+
+      // ✅ Option réelle : si tu as une Cloud Function
+      /*
+      const sendMail = functions.httpsCallable('sendMailToUser');
+      sendMail({ subject: "Domotique", text: "Hello " + user.email })
+        .then(result => { alert("Mail envoyé !"); })
+        .catch(error => { alert("Erreur : " + error.message); });
+      */
+    });
   </script>
 </body>
 </html>
