@@ -89,7 +89,6 @@ body {
     font-size: 0.9rem;
 }
 
-/* 📱 Version Mobile */
 @media all and (max-width: 1000px) {
     * {
         font-size: 110%;
