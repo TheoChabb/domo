@@ -83,8 +83,14 @@ body {
 
     .div_formulaire {
         width: 80%;
-        border-radius: 20px;
+        border-radius: 30px;
     }
 
-    
+    .div_formulaire input {
+        border: 4px solid #000;
+    }
+
+    .div_formulaire button {
+        border: 4px solid #000;
+    }
 }
