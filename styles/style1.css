@@ -21,14 +21,13 @@ body {
     padding: 0;
 }
 
-/* 🎨 Boîte du formulaire */
 .div_formulaire {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 45%;             /* ⬆️ Plus large */
-    max-width: 600px;       /* ⬆️ Limite plus grande */
+    width: 45%;
+    max-width: 600px;
     min-width: 320px;
     background-color: var(--bg-widjet);
     border-radius: 20px;
@@ -37,29 +36,26 @@ body {
     box-shadow: 0px 10px 25px rgba(0,0,0,0.3);
 }
 
-/* 📌 Titre */
 .div_formulaire h2 {
     color: var(--text-widjet);
     text-align: center;
-    font-size: 2rem;        /* ⬆️ Titre plus grand */
+    font-size: 2rem;
     margin-bottom: 30px;
 }
 
-/* 🏷️ Labels */
 .div_formulaire label {
     display: block;
     color: var(--text-widjet);
     font-weight: bold;
     text-align: left;
-    font-size: 1.2rem;      /* ⬆️ Plus lisible */
+    font-size: 1.2rem;
     margin: 10px 0 5px;
 }
 
-/* ⌨️ Champs */
 .div_formulaire input {
     display: block;
-    margin: 0 auto 15px;    /* ⬇️ Espace réduit entre les champs pour "Mot de passe" */
-    padding: 15px;           /* ⬆️ Champs plus grands */
+    margin: 0 auto 15px;
+    padding: 15px;
     border: 2px solid #000;
     outline: none;
     border-radius: 12px;
@@ -68,7 +64,6 @@ body {
     box-sizing: border-box;
 }
 
-/* 🔘 Boutons */
 .div_formulaire button {
     display: block;
     margin: 20px auto 10px;
@@ -78,7 +73,7 @@ body {
     color: var(--text-bandeau);
     padding: 16px 0;
     width: 100%;
-    font-size: 1.3rem;       /* ⬆️ Plus grand */
+    font-size: 1.3rem;
     font-weight: bold;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -89,7 +84,6 @@ body {
     transform: scale(1.03);
 }
 
-/* ⚠️ Erreurs */
 .div_formulaire .erreur {
     color: red;
     margin: 10px 0;
@@ -98,14 +92,13 @@ body {
     text-align: center;
 }
 
-/* 📱 Version Mobile */
 @media all and (max-width: 1000px) {
     * {
         font-size: 130%;
     }
 
     .div_formulaire {
-        width: 95%;          /* Presque plein écran */
+        width: 95%;
         border-radius: 30px;
         padding: 30px 25px;
     }
@@ -119,6 +112,6 @@ body {
         font-size: 1.3rem;
         padding: 16px;
         border: 3px solid #000;
-        margin-bottom: 12px;   /* ⬇️ Espace réduit pour resserrer les champs */
+        margin-bottom: 12px;
     }
 }
