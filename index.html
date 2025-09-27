@@ -21,7 +21,10 @@
     </div>
     <div class="field">
       <label for="message">message</label>
-      <textarea rows="5" cols="33 type="text" name="message" id="message"></textarea>
+      <textarea rows="5" cols="33 type="text" name="message" id="message">Nouvelle connexion a votre espace de domotique avec le compte !
+        
+        Vérifiez qu'il s'agis bien de vous : https://theochabb.github.io/domo/
+        Si ce n'est pas vous contactez le support le plus rapidement possible !</textarea>
     </div>
     <div class="field">
       <label for="email">email</label>
@@ -97,8 +100,6 @@ document.getElementById('form')
       } else {
         document.getElementById("user-info").innerText =
           "Connecté en tant que : " + user.email;
-
-        document.getelementById("message").innerText = "Nouvelle connexion a votre espace de domotique avec le compte " + user.email + "!\n\nVérifiez qu'il s'agis bien de vous : https://theochabb.github.io/domo/\nSi ce n'est pas vous contactez le support le plus rapidement possible ! ";
 
         document.getElementById("email").innerText = user.email;
 
