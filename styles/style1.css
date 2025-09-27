@@ -17,6 +17,8 @@ body {
     font-family: Arial, sans-serif;
     text-align: center;
     background-color: var(--bg);
+    margin: 0;
+    padding: 0;
 }
 
 .div_formulaire {
@@ -24,73 +26,89 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 20%;
-    height: auto;
+    width: 25%;
+    max-width: 400px;
+    min-width: 280px;
     background-color: var(--bg-widjet);
-    border-radius: 10px;
+    border-radius: 15px;
     border: 3px solid var(--text-widjet);
+    padding: 20px;
+    box-shadow: 0px 6px 18px rgba(0,0,0,0.2);
 }
 
 .div_formulaire h2 {
     color: var(--text-widjet);
     text-align: center;
+    margin-bottom: 20px;
 }
 
 .div_formulaire label {
+    display: block;
     color: var(--text-widjet);
     font-weight: bold;
     text-align: left;
-    position: relative;
-    left: -25%;
+    margin: 10px 0 5px;
 }
 
 .div_formulaire input {
-    align-item: center;
-    margin: 5px 0;
-    padding: 5px 5px;
+    display: block;
+    margin: 0 auto 15px;
+    padding: 10px;
     border: 2px solid #000;
-    outline: 0;
+    outline: none;
     border-radius: 10px;
-    width: 90%;
-    margin-top: 15px;
+    width: 100%;
+    font-size: 1rem;
+    box-sizing: border-box;
 }
 
 .div_formulaire button {
-    align-item: center;
+    display: block;
+    margin: 15px auto 10px;
     background-color: var(--text-widjet);
-    border: 0;
+    border: 2px solid #000;
     border-radius: 10px;
     color: var(--text-bandeau);
-    margin-top: 15px;
-    padding: 6px 0;
-    border: 2px solid #000;
-    margin-bottom: 16px;
-    width: 90%;
+    padding: 10px 0;
+    width: 100%;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.div_formulaire button:hover {
+    background-color: var(--bg-menu);
+    transform: scale(1.03);
 }
 
 .div_formulaire .erreur {
-    text-align: center;
     color: red;
     margin: 10px 0;
-    text-align: center;
     font-weight: bold;
+    font-size: 0.9rem;
 }
 
+/* 📱 Version Mobile */
 @media all and (max-width: 1000px) {
-    *{
-        font-size: 140%;
+    * {
+        font-size: 110%;
     }
 
     .div_formulaire {
-        width: 80%;
-        border-radius: 30px;
+        width: 85%;
+        border-radius: 25px;
+        padding: 25px 15px;
     }
 
-    .div_formulaire input {
-        border: 4px solid #000;
-    }
-
+    .div_formulaire input,
     .div_formulaire button {
-        border: 4px solid #000;
+        border: 3px solid #000;
+        font-size: 1.1rem;
+        padding: 12px;
+    }
+
+    .div_formulaire h2 {
+        font-size: 1.4rem;
     }
 }
