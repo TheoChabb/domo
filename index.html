@@ -3,38 +3,40 @@
 <head>
   <meta charset="UTF-8">
   <title>Tableau de bord domotique</title>
-  <style>
-    body { font-family: Arial, sans-serif; text-align: center; margin: 40px; }
-    h1 { color: #2c3e50; }
-    button {
-      padding: 10px 20px;
-      margin: 10px;
-      cursor: pointer;
-      border: none;
-      border-radius: 5px;
-      color: white;
-    }
-    #logoutBtn { background: #e74c3c; }
-    #sendMailBtn { background: #3498db; }
-    #data {
-      margin-top: 30px;
-      padding: 20px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      background: #f9f9f9;
-      display: inline-block;
-      text-align: left;
-      min-width: 250px;
-    }
-  </style>
+  <link rel="stylesheet" herf="styles/style2.css">
 </head>
 <body>
-  <h1>Bienvenue sur la page domotique 🔐</h1>
-  <p>Seuls les utilisateurs connectés peuvent voir ces données.</p>
+  <form id="form">
+    <div class="field">
+      <label for="title">title</label>
+      <input type="text" name="title" id="title">
+    </div>
+    <div class="field">
+      <label for="name">name</label>
+      <input type="text" name="name" id="name">
+    </div>
+    <div class="field">
+      <label for="time">time</label>
+      <input type="text" name="time" id="time">
+    </div>
+    <div class="field">
+      <label for="message">message</label>
+      <input type="text" name="message" id="message">
+    </div>
+    <div class="field">
+      <label for="email">email</label>
+      <input type="text" name="email" id="email">
+    </div>
+  
+    <input type="submit" id="button" value="Send Email" >
+  </form>
 
-  <div id="data">Chargement des données...</div>
+<script type="text/javascript"
+  src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
-  <button id="sendMailBtn">Envoyer un mail</button>
+<script type="text/javascript">
+  emailjs.init('TsfbNCBs576Ka422a')
+</script>
   <button id="logoutBtn">Se déconnecter</button>
 
   <!-- Firebase compat -->
