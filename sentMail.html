@@ -1,31 +1,29 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <title>Envoyer un mail via JS</title>
-    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
-    <script>
-        (function(){
-            emailjs.init("uXpY_GfHda1L3UlCC");
-        })();
+  <meta charset="UTF-8">
+  <title>Envoyer un mail via JS</title>
+  <script type="module">
+    import emailjs from 'https://cdn.emailjs.com/dist/email.min.js';
+    emailjs.init("uXpY_GfHda1L3UlCC");
 
-        function sendMail() {
-            emailjs.send("service_ffmf3mv", "template_vz78juq", {
-                to_name: "Destinataire",
-                from_name: "Moi",
-                message_html: document.getElementById("message").value
-            })
-            .then(function(response) {
-                alert("Mail envoyé avec succès !");
-            }, function(error) {
-                alert("Erreur lors de l'envoi : " + JSON.stringify(error));
-            });
-        }
-    </script>
+    function sendMail() {
+      emailjs.send("service_ffmf3mv", "template_vz78juq", {
+        to_name: "Destinataire",
+        from_name: "Moi",
+        message_html: document.getElementById("message").value
+      })
+      .then(function(response) {
+        alert("Mail envoyé avec succès !");
+      }, function(error) {
+        alert("Erreur lors de l'envoi : " + JSON.stringify(error));
+      });
+    }
+  </script>
 </head>
 <body>
-    <h1>Envoyer un mail</h1>
-    <textarea id="message" placeholder="Tape ton message ici" rows="6" cols="50"></textarea><br>
-    <button onclick="sendMail()">Envoyer le mail !</button>
+  <h1>Envoyer un mail</h1>
+  <textarea id="message" placeholder="Tape ton message ici" rows="6" cols="50"></textarea><br>
+  <button onclick="sendMail()">Envoyer le mail</button>
 </body>
 </html>
