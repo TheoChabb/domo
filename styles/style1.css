@@ -78,7 +78,7 @@ body {
 
 @media all and (max-width: 1000px) {
     *{
-        font-size: 150%;
+        font-size: 120%;
     }
 
     .div_formulaire {
