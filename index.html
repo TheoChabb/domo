@@ -21,10 +21,7 @@
     </div>
     <div class="field">
       <label for="message">message</label>
-      <textarea rows="5" cols="33 type="text" name="message" id="message">Nouvelle connexion a votre espace de domotique avec le compte !
-        
-        Vérifiez qu'il s'agis bien de vous : https://theochabb.github.io/domo/
-        Si ce n'est pas vous contactez le support le plus rapidement possible !</textarea>
+      <textarea rows="5" cols="33 type="text" name="message" id="message"></textarea>
     </div>
     <div class="field">
       <label for="email">email</label>
@@ -103,6 +100,8 @@ document.getElementById('form')
 
         document.getElementById("email").innerText = user.email;
 
+        document.getElementById("message").innerText = ">Nouvelle connexion a votre espace de domotique avec le compte !\n\nVérifiez qu'il s'agis bien de vous : https://theochabb.github.io/domo/\nSi ce n'est pas vous contactez le support le plus rapidement possible !";
+
         document.getElementById("button").click();
       }
     });
@@ -110,6 +109,12 @@ document.getElementById('form')
     function logout() {
       auth.signOut()
         .then(() => {
+
+        document.getElementById("email").innerText = user.email;
+
+        document.getElementById("message").innerText = ">Nouvelle connexion a votre espace de domotique avec le compte !";
+
+        document.getElementById("button").click();
           window.location.href = "login.html";
         })
         .catch(error => {
