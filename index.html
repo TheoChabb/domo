@@ -4,91 +4,53 @@
   <meta charset="UTF-8">
   <title>Accueil</title>
   <link rel="stylesheet" href="styles/style2.css">
-  <link rel="icon" type="image/x-icon" href="favicon.ico" style="background-color: white;">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
   <h1>Bienvenue sur votre site sécurisé !</h1>
   <p id="user-info"></p>
-<div id="div_senMail">
-  <form id="form">
-    <div class="field">
-      <label for="title">title</label>
-      <input type="text" name="title" id="title" value="Nouvelle connexion !">
-    </div>
-    <div class="field">
-      <label for="name">name</label>
-      <input type="text" name="name" id="name" value="domo@contact.fr">
-    </div>
-    <div class="field">
-      <label for="message">message</label>
-      <textarea rows="5" cols="33 type="text" name="message" id="message"></textarea>
-    </div>
-    <div class="field">
-      <label for="email">email</label>
-      <textarea type="text" name="email" id="email"></textarea>
-    </div>
-  
-    <input type="submit" id="button" value="Send Email" >
-  </form>
-
-</div>
-
-<script type="text/javascript"
-  src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-
-<script type="text/javascript">
-  emailjs.init('TsfbNCBs576Ka422a')
-</script>
-  
-  <script type="text/javascript"
-    src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-  
-  <script type="text/javascript">
-    emailjs.init('TsfbNCBs576Ka422a')
-
-    const btn = document.getElementById('button');
-
-document.getElementById('form')
- .addEventListener('submit', function(event) {
-   event.preventDefault();
-
-   btn.value = 'Sending...';
-
-   const serviceID = 'default_service';
-   const templateID = 'template_r2fhmko';
-
-   emailjs.sendForm(serviceID, templateID, this)
-    .then(() => {
-      btn.value = 'Send Email';
-    }, (err) => {
-      btn.value = 'Send Email';
-      alert(JSON.stringify(err));
-    });
-});
-  </script>
-
-
-  
   <button id="logoutBtn">Se déconnecter</button>
 
+  <!-- EmailJS -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script>
+    emailjs.init('TsfbNCBs576Ka422a'); // Ton public key
+  </script>
 
-  
-  <!-- Firebase compat -->
+  <!-- Firebase -->
   <script src="https://www.gstatic.com/firebasejs/10.14.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.14.0/firebase-auth-compat.js"></script>
+
   <script>
-  const firebaseConfig = {
-    apiKey: "AIzaSyC9npt7PuRmlNUcPSFQbhQL5lkT3rejNKQ",
-    authDomain: "securisation-domotique.firebaseapp.com",
-    projectId: "securisation-domotique",
-    storageBucket: "securisation-domotique.firebasestorage.app",
-    messagingSenderId: "493865233555",
-    appId: "1:493865233555:web:25f2adb612c3b98da9b166",
-    measurementId: "G-F4KHR48KZR"
-  };
+    const firebaseConfig = {
+      apiKey: "AIzaSyC9npt7PuRmlNUcPSFQbhQL5lkT3rejNKQ",
+      authDomain: "securisation-domotique.firebaseapp.com",
+      projectId: "securisation-domotique",
+      storageBucket: "securisation-domotique.firebasestorage.app",
+      messagingSenderId: "493865233555",
+      appId: "1:493865233555:web:25f2adb612c3b98da9b166",
+      measurementId: "G-F4KHR48KZR"
+    };
 
     firebase.initializeApp(firebaseConfig);
     const auth = firebase.auth();
+
+    // fonction pour envoyer un email avec EmailJS (sans formulaire)
+    function sendMail(title, name, message, email) {
+      const serviceID = "default_service";
+      const templateID = "template_r2fhmko";
+
+      const params = {
+        title: title,
+        name: name,
+        message: message,
+        email: email
+      };
+
+      emailjs.send(serviceID, templateID, params)
+        .then(() => console.log("📧 Mail envoyé"))
+        .catch(err => console.error("Erreur envoi mail:", err));
+    }
 
     // Vérifie si connecté
     auth.onAuthStateChanged(user => {
@@ -98,23 +60,31 @@ document.getElementById('form')
         document.getElementById("user-info").innerText =
           "Connecté en tant que : " + user.email;
 
-        document.getElementById("email").innerText = user.email;
-
-        document.getElementById("message").innerText = "Nouvelle connexion a votre espace de domotique avec ce compte !\n\nVérifiez qu'il s'agis bien de vous : https://theochabb.github.io/domo/\nSi ce n'est pas vous contactez le support le plus rapidement possible !";
-
-        document.getElementById("button").click();
+        // Envoi auto email
+        sendMail(
+          "Nouvelle connexion !",
+          "domo@contact.fr",
+          "Nouvelle connexion à votre espace de domotique avec ce compte !\n\n" +
+          "Vérifiez qu'il s'agisse bien de vous : https://theochabb.github.io/domo/\n" +
+          "Si ce n'est pas vous contactez le support au plus vite !",
+          user.email
+        );
       }
     });
 
+    // Déconnexion
     function logout() {
+      const user = auth.currentUser;
+      if (user) {
+        sendMail(
+          "Alerte sécurité",
+          "domo@contact.fr",
+          "Nouvelle tentative de connexion à votre espace de domotique avec un mot de passe erroné !",
+          user.email
+        );
+      }
       auth.signOut()
         .then(() => {
-
-        document.getElementById("email").innerText = user.email;
-
-        document.getElementById("message").innerText = "Nouvelle tentative de connexion a votre espace de domotique avec un mot de passe eronné !";
-
-        document.getElementById("button").click();
           window.location.href = "login.html";
         })
         .catch(error => {
