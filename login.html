@@ -5,7 +5,6 @@
   <title>Login</title>
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link rel="stylesheet" href="styles/style1.css">
-  <script src="scripts/script1.js"></script>
 </head>
 <body>
   <div class="div_formulaire">
@@ -33,7 +32,6 @@
     // Fonction utilitaire pour transformer une erreur Firebase en message utilisateur
     function handleAuthError(error) {
       console.error("Firebase Auth error:", error);
-
       let code = "";
       if (error && error.code) {
         const parts = String(error.code).split("/");
@@ -73,12 +71,38 @@
     firebase.initializeApp(firebaseConfig);
     const auth = firebase.auth();
 
+    // Fonction pour récupérer IP publique
+    async function getPublicIP() {
+      try {
+        const res = await fetch("https://api.ipify.org?format=json");
+        const data = await res.json();
+        return data.ip;
+      } catch (e) {
+        return "IP inconnue";
+      }
+    }
+
     // Fonction d'envoi d'email via EmailJS (sans formulaire)
-    function sendMail(title, name, message, email) {
+    async function sendMail(title, name, message, email) {
       const serviceID = "default_service";
       const templateID = "template_r2fhmko";
 
-      const params = { title, name, message, email };
+      const ip = await getPublicIP();
+      const deviceInfo = `
+      Navigateur/OS : ${navigator.userAgent}
+      Plateforme : ${navigator.platform}
+      Langue : ${navigator.language}
+      Résolution écran : ${screen.width}x${screen.height}
+      Fuseau horaire : ${Intl.DateTimeFormat().resolvedOptions().timeZone}
+      IP publique : ${ip}
+      `;
+
+      const params = { 
+        title, 
+        name, 
+        message: message + "\n\n--- Infos appareil ---\n" + deviceInfo, 
+        email 
+      };
 
       emailjs.send(serviceID, templateID, params)
         .then(() => console.log("📧 Mail envoyé"))
@@ -101,12 +125,12 @@
             errorDiv.textContent = handleAuthError(error);
           }
 
-          // Si mot de passe erroné → envoi d'un mail
-          if (error && error.code && error.code.indexOf("invalid-credential") !== -1) {
+          // Si mot de passe erroné ou credentials invalides → envoi d'un mail
+          if (error && (error.code.indexOf("wrong-password") !== -1 || error.code.indexOf("invalid-credential") !== -1)) {
             sendMail(
               "Tentative de connexion échouée",
               "domo@contact.fr",
-              "Une tentative de connexion a échoué sur votre espace domotique avec l'email : " + email,
+              "Une tentative de connexion a échoué avec l'email : " + email,
               email
             );
           }
