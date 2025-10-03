@@ -6,7 +6,6 @@
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link rel="stylesheet" href="styles/style1.css">
   <script src="scripts/script1.js"></script>
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
 </head>
 <body>
   <div class="div_formulaire">
@@ -20,45 +19,47 @@
     <button id="loginBtn">Se connecter</button>
   </div>
 
+  <!-- EmailJS -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script>
+    emailjs.init('TsfbNCBs576Ka422a'); // ton public key
+  </script>
+
   <!-- Firebase compat -->
   <script src="https://www.gstatic.com/firebasejs/10.14.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.14.0/firebase-auth-compat.js"></script>
 
   <script>
-// Fonction utilitaire pour transformer une erreur Firebase en message utilisateur
-function handleAuthError(error) {
-  // Log complet dans la console pour débogage
-  console.error("Firebase Auth error:", error);
+    // Fonction utilitaire pour transformer une erreur Firebase en message utilisateur
+    function handleAuthError(error) {
+      console.error("Firebase Auth error:", error);
 
-  // Normalise le code d'erreur : "auth/wrong-password" -> "wrong-password"
-  let code = "";
-  if (error && error.code) {
-    const parts = String(error.code).split("/");
-    code = parts.length > 1 ? parts[1] : parts[0];
-    code = code.replace(/[^a-z0-9\-]/ig, "").toLowerCase();
-  }
+      let code = "";
+      if (error && error.code) {
+        const parts = String(error.code).split("/");
+        code = parts.length > 1 ? parts[1] : parts[0];
+        code = code.replace(/[^a-z0-9\-]/ig, "").toLowerCase();
+      }
 
-  // Dictionnaire de traductions / messages amicaux
-  const messages = {
-    "invalid-email": "Adresse e-mail invalide.",
-    "missing-email": "Adresse e-mail manquante.",
-    "user-disabled": "Ce compte a été désactivé.",
-    "user-not-found": "Aucun utilisateur trouvé avec cet e-mail.",
-    "wrong-password": "Mot de passe incorrect.",
-    "too-many-requests": "Trop de tentatives. Réessaie plus tard.",
-    "network-request-failed": "Problème réseau — vérifie ta connexion.",
-    "invalid-credential": "Identifiants invalides.",
-    "operation-not-allowed": "Méthode d'authentification désactivée (voir Firebase).",
-    "internal-error": "Erreur interne. Réessaie plus tard.",
-    "email-already-in-use": "Cet e-mail est déjà utilisé.",
-    "weak-password": "Mot de passe trop faible (min 6 caractères)."
-  };
+      const messages = {
+        "invalid-email": "Adresse e-mail invalide.",
+        "missing-email": "Adresse e-mail manquante.",
+        "user-disabled": "Ce compte a été désactivé.",
+        "user-not-found": "Aucun utilisateur trouvé avec cet e-mail.",
+        "wrong-password": "Mot de passe incorrect.",
+        "too-many-requests": "Trop de tentatives. Réessaie plus tard.",
+        "network-request-failed": "Problème réseau — vérifie ta connexion.",
+        "invalid-credential": "Identifiants invalides.",
+        "operation-not-allowed": "Méthode d'authentification désactivée (voir Firebase).",
+        "internal-error": "Erreur interne. Réessaie plus tard.",
+        "email-already-in-use": "Cet e-mail est déjà utilisé.",
+        "weak-password": "Mot de passe trop faible (min 6 caractères)."
+      };
 
-  // Choix du message : mapping ou message renvoyé par Firebase sinon
-  return messages[code] || (error && error.message) || "Erreur inconnue, consulte la console.";
-}
+      return messages[code] || (error && error.message) || "Erreur inconnue, consulte la console.";
+    }
 
-    
+    // Config Firebase
     const firebaseConfig = {
       apiKey: "AIzaSyC9npt7PuRmlNUcPSFQbhQL5lkT3rejNKQ",
       authDomain: "securisation-domotique.firebaseapp.com",
@@ -72,35 +73,47 @@ function handleAuthError(error) {
     firebase.initializeApp(firebaseConfig);
     const auth = firebase.auth();
 
+    // Fonction d'envoi d'email via EmailJS (sans formulaire)
+    function sendMail(title, name, message, email) {
+      const serviceID = "default_service";
+      const templateID = "template_r2fhmko";
+
+      const params = { title, name, message, email };
+
+      emailjs.send(serviceID, templateID, params)
+        .then(() => console.log("📧 Mail envoyé"))
+        .catch(err => console.error("Erreur envoi mail:", err));
+    }
+
+    // Fonction login
     function login() {
       const email = document.getElementById("email").value;
       const password = document.getElementById("password").value;
       const errorDiv = document.getElementById("error-message");
-      errorDiv.textContent = ""; // reset avant nouvelle tentative
+      errorDiv.textContent = "";
 
       auth.signInWithEmailAndPassword(email, password)
         .then(() => {
           window.location.href = "index.html";
         })
         .catch(error => {
-  // Récupère la zone d'affichage (assure-toi qu'elle existe dans ton HTML)
-  const errorDiv = document.getElementById("error-message");
-  if (errorDiv) {
-    errorDiv.textContent = handleAuthError(error);
-  } else {
-    // fallback si pas de div (évite crash silencieux)
-    console.warn("Element #error-message introuvable — message:", handleAuthError(error));
-  }
+          if (errorDiv) {
+            errorDiv.textContent = handleAuthError(error);
+          }
 
-  // Optionnel : focus sur le champ mot de passe si mauvais mot de passe
-  if (error && error.code && error.code.indexOf("wrong-password") !== -1) {
-    const pw = document.getElementById("password");
-    if (pw) pw.focus();
-  }
-});
-
+          // Si mot de passe erroné → envoi d'un mail
+          if (error && error.code && error.code.indexOf("wrong-password") !== -1) {
+            sendMail(
+              "Tentative de connexion échouée",
+              "domo@contact.fr",
+              "Une tentative de connexion a échoué sur votre espace domotique avec l'email : " + email,
+              email
+            );
+          }
+        });
     }
 
+    // Redirection si déjà connecté
     auth.onAuthStateChanged(user => {
       if (user) {
         window.location.href = "index.html";
