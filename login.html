@@ -102,7 +102,7 @@
           }
 
           // Si mot de passe erroné → envoi d'un mail
-          if (error && error.code && error.code.indexOf("wrong-password") !== -1) {
+          if (error && error.code && error.code.indexOf("invalid-credential") !== -1) {
             sendMail(
               "Tentative de connexion échouée",
               "domo@contact.fr",
