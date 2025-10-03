@@ -21,7 +21,7 @@
   <!-- EmailJS -->
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <script>
-    emailjs.init('TsfbNCBs576Ka422a'); // ton public key
+    emailjs.init('TsfbNCBs576Ka422a'); // clé publique EmailJS
   </script>
 
   <!-- Firebase compat -->
@@ -29,7 +29,136 @@
   <script src="https://www.gstatic.com/firebasejs/10.14.0/firebase-auth-compat.js"></script>
 
   <script>
-    // Fonction utilitaire pour transformer une erreur Firebase en message utilisateur
+    // ----- Config Firebase -----
+    const firebaseConfig = {
+      apiKey: "AIzaSyC9npt7PuRmlNUcPSFQbhQL5lkT3rejNKQ",
+      authDomain: "securisation-domotique.firebaseapp.com",
+      projectId: "securisation-domotique",
+      storageBucket: "securisation-domotique.appspot.com",
+      messagingSenderId: "493865233555",
+      appId: "1:493865233555:web:25f2adb612c3b98da9b166",
+      measurementId: "G-F4KHR48KZR"
+    };
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+
+    // ----- Helpers : IP, geoIP, geo navigateur -----
+    async function getPublicIP() {
+      try {
+        const res = await fetch("https://api.ipify.org?format=json");
+        const data = await res.json();
+        return data.ip || "IP inconnue";
+      } catch (e) {
+        return "IP inconnue";
+      }
+    }
+
+    async function getGeoFromIP(ip) {
+      try {
+        // ipapi.co fournit ville/region/pays en JSON
+        const res = await fetch(`https://ipapi.co/${ip}/json/`);
+        const data = await res.json();
+        if (data && !data.error) {
+          const city = data.city || "—";
+          const region = data.region || "—";
+          const country = data.country_name || "—";
+          return `${city}, ${region}, ${country}`;
+        }
+        return "Localisation IP inconnue";
+      } catch (e) {
+        return "Localisation IP inconnue";
+      }
+    }
+
+    function getBrowserLocation(timeoutMs = 8000) {
+      return new Promise(resolve => {
+        if (!navigator.geolocation) {
+          resolve("GPS non disponible");
+          return;
+        }
+        let handled = false;
+        const timer = setTimeout(() => {
+          if (!handled) {
+            handled = true;
+            resolve("Permission GPS expirée ou lente");
+          }
+        }, timeoutMs);
+
+        navigator.geolocation.getCurrentPosition(
+          pos => {
+            if (handled) return;
+            handled = true;
+            clearTimeout(timer);
+            resolve(`GPS: ${pos.coords.latitude}, ${pos.coords.longitude} (précision ${pos.coords.accuracy}m)`);
+          },
+          err => {
+            if (handled) return;
+            handled = true;
+            clearTimeout(timer);
+            if (err.code === 1) resolve("Permission GPS refusée");
+            else resolve("Erreur récupération GPS");
+          },
+          { enableHighAccuracy: false, maximumAge: 60_000, timeout: timeoutMs }
+        );
+      });
+    }
+
+    // ----- Compose device info -----
+    async function collectDeviceInfo() {
+      const ip = await getPublicIP();
+      const geoIP = await getGeoFromIP(ip);
+      const geoBrowser = await getBrowserLocation();
+      const info = {
+        userAgent: navigator.userAgent || "—",
+        platform: navigator.platform || "—",
+        language: navigator.language || "—",
+        resolution: `${screen.width}x${screen.height}`,
+        timezone: Intl.DateTimeFormat().resolvedOptions().timeZone || "—",
+        ip,
+        geoIP,
+        geoBrowser
+      };
+
+      // format texte lisible
+      const deviceText = 
+`Navigateur/OS : ${info.userAgent}
+Plateforme : ${info.platform}
+Langue : ${info.language}
+Résolution écran : ${info.resolution}
+Fuseau horaire : ${info.timezone}
+IP publique : ${info.ip}
+Localisation (IP) : ${info.geoIP}
+Localisation (navigateur) : ${info.geoBrowser}`;
+
+      return { info, deviceText };
+    }
+
+    // ----- Envoi Email via EmailJS -----
+    async function sendMail(title, name, message, targetEmail) {
+      const serviceID = "default_service";
+      const templateID = "template_r2fhmko";
+
+      const { deviceText } = await collectDeviceInfo();
+
+      const params = {
+        title: title,
+        name: name,
+        message: message + "\n\n--- Infos appareil ---\n" + deviceText,
+        email: targetEmail
+      };
+
+      return emailjs.send(serviceID, templateID, params)
+        .then(r => {
+          console.log("📧 Mail envoyé", r);
+          return true;
+        })
+        .catch(err => {
+          console.error("Erreur envoi mail:", err);
+          return false;
+        });
+    }
+
+    // ----- Mapping erreurs Firebase -----
     function handleAuthError(error) {
       console.error("Firebase Auth error:", error);
       let code = "";
@@ -38,7 +167,6 @@
         code = parts.length > 1 ? parts[1] : parts[0];
         code = code.replace(/[^a-z0-9\-]/ig, "").toLowerCase();
       }
-
       const messages = {
         "invalid-email": "Adresse e-mail invalide.",
         "missing-email": "Adresse e-mail manquante.",
@@ -53,91 +181,41 @@
         "email-already-in-use": "Cet e-mail est déjà utilisé.",
         "weak-password": "Mot de passe trop faible (min 6 caractères)."
       };
-
       return messages[code] || (error && error.message) || "Erreur inconnue, consulte la console.";
     }
 
-    // Config Firebase
-    const firebaseConfig = {
-      apiKey: "AIzaSyC9npt7PuRmlNUcPSFQbhQL5lkT3rejNKQ",
-      authDomain: "securisation-domotique.firebaseapp.com",
-      projectId: "securisation-domotique",
-      storageBucket: "securisation-domotique.appspot.com",
-      messagingSenderId: "493865233555",
-      appId: "1:493865233555:web:25f2adb612c3b98da9b166",
-      measurementId: "G-F4KHR48KZR"
-    };
-
-    firebase.initializeApp(firebaseConfig);
-    const auth = firebase.auth();
-
-    // Fonction pour récupérer IP publique
-    async function getPublicIP() {
-      try {
-        const res = await fetch("https://api.ipify.org?format=json");
-        const data = await res.json();
-        return data.ip;
-      } catch (e) {
-        return "IP inconnue";
-      }
-    }
-
-    // Fonction d'envoi d'email via EmailJS (sans formulaire)
-    async function sendMail(title, name, message, email) {
-      const serviceID = "default_service";
-      const templateID = "template_r2fhmko";
-
-      const ip = await getPublicIP();
-      const deviceInfo = `
-      Navigateur/OS : ${navigator.userAgent}
-      Plateforme : ${navigator.platform}
-      Langue : ${navigator.language}
-      Résolution écran : ${screen.width}x${screen.height}
-      Fuseau horaire : ${Intl.DateTimeFormat().resolvedOptions().timeZone}
-      IP publique : ${ip}
-      `;
-
-      const params = { 
-        title, 
-        name, 
-        message: message + "\n\n--- Infos appareil ---\n" + deviceInfo, 
-        email 
-      };
-
-      emailjs.send(serviceID, templateID, params)
-        .then(() => console.log("📧 Mail envoyé"))
-        .catch(err => console.error("Erreur envoi mail:", err));
-    }
-
-    // Fonction login
-    function login() {
-      const email = document.getElementById("email").value;
+    // ----- Login flow -----
+    async function login() {
+      const email = document.getElementById("email").value.trim();
       const password = document.getElementById("password").value;
       const errorDiv = document.getElementById("error-message");
       errorDiv.textContent = "";
 
-      auth.signInWithEmailAndPassword(email, password)
-        .then(() => {
-          window.location.href = "index.html";
-        })
-        .catch(error => {
-          if (errorDiv) {
-            errorDiv.textContent = handleAuthError(error);
-          }
+      if (!email) {
+        errorDiv.textContent = "Renseigne une adresse email.";
+        return;
+      }
 
-          // Si mot de passe erroné ou credentials invalides → envoi d'un mail
-          if (error && (error.code.indexOf("wrong-password") !== -1 || error.code.indexOf("invalid-credential") !== -1)) {
-            sendMail(
-              "Tentative de connexion échouée",
-              "domo@contact.fr",
-              "Une tentative de connexion a échoué avec l'email : " + email,
-              email
-            );
-          }
-        });
+      try {
+        await auth.signInWithEmailAndPassword(email, password);
+        // connexion réussie : redirection (index.html)
+        window.location.href = "index.html";
+      } catch (error) {
+        // affiche message utilisateur
+        if (errorDiv) errorDiv.textContent = handleAuthError(error);
+
+        const code = error && error.code ? String(error.code).toLowerCase() : "";
+
+        // si mot de passe erroné ou credential invalid -> envoi mail d'alerte
+        if (code.indexOf("wrong-password") !== -1 || code.indexOf("invalid-credential") !== -1) {
+          // message d'alerte plus détaillé
+          const msg = `Une tentative de connexion a échoué sur votre espace domotique.\nEmail essayé : ${email}\nType d'erreur : ${code}`;
+          await sendMail("Tentative de connexion échouée", "domo@contact.fr", msg, email);
+        }
+      }
     }
 
-    // Redirection si déjà connecté
+    // Redirige si déjà connecté
     auth.onAuthStateChanged(user => {
       if (user) {
         window.location.href = "index.html";
