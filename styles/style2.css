@@ -5,8 +5,9 @@
     --text-bandeau: #fff;
     --height-btn-menu: 60%;
     --font-size-h1-bandeau: 360%;
-    --width-menu: 300px;
+    --width-menu: 15%;
     --bg-menu: #007db8;
+    --height-h1: -15%;
 }
 
 header {
@@ -74,6 +75,7 @@ header h1 {
     list-style: none;
     padding: 0% 0%;
     padding-right: 10%;
+    position: relative;
     width: 100%;
     justify-content: center;
     align-items: center;
