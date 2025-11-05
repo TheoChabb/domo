@@ -6,7 +6,7 @@
 }
 
 header {
-    position: fixed;
+    position: absolute;
     width: 100%;
     height: var(--height-bandeau);
     background-color: var(--bg-bandeau);
