@@ -52,7 +52,7 @@ header h1 {
 }
 
 .menu {
-    position: none;
+    position: fixed;
     top: var(--height-bandeau);
     right: calc(0% - var(--width-menu));
     width: var(--width-menu);
@@ -71,7 +71,7 @@ header h1 {
 }
 
 .menu ul {
-    list-style: flex;
+    list-style: none;
     padding: 0% 0%;
     padding-right: 10%;
     position: relative;
