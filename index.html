@@ -12,8 +12,7 @@
             <h1>Domotique</h1>
             <a onclick="toggleMenu()"><img class="imgMenu" src="images/imgMenu.png"></a>
         </header>
-
-         <div class="menu" id="menu">
+        <div class="menu" id="menu">
             <ul>
                 <li><button onclick="changeSection(0)">Accueil</button></li>
                 <li><button onclick="changeSection(1)">Domotique</button></li>
@@ -21,6 +20,84 @@
             </ul>
             <div id="dateTel" class="dateTel"></div>
         </div>
+        
+        <div class="page" id="page">
+            <div class="section accueil">
+                <br>
+                <div class="widjet">
+                    <h1>Statuts lampes :</h1>
+                    <p> Lampe chambre : <span id="lampeChambre">Chargement...</span><br>
+                        Lampe bureau : <span id="lampeBureau">Chargement...</span><br>
+                    </p>
+                </div>
+                
+                <div class="widjet">
+                    <h1>Temp&eacute;rature int&eacute;rieure :</h1>
+                    <p> Temp&eacute;rature : <span id="tempInt">Chargement...</span>°C<br>
+                        Humidit&eacute; : <span id="humiInt">Chargement...</span>%<br>
+                    </p>
+                </div>
+                
+                <div class="widjet">
+                    <h1>Temp&eacute;rature ext&eacute;rieure :</h1>
+                    <p> Temp&eacute;rature : <span id="tempExt">Chargement...</span>°C<br>
+                        Humidit&eacute; : <span id="humiExt">Chargement...</span>%<br>
+                    </p>
+                </div>
+                
+                <div class="widjet">
+                    <h1>Alarme :</h1>
+                    <p>Alarme : <span id="alarme">Chargement...</span>
+                    </p>
+                </div>
+            </div>
+            <div class="section domotique">
+                <br>
+                <div class="widjet">
+                    <h1>Allumer/eteindre la lampe du bureau :</h1>
+                    <button class="wid_button" onclick="updateStatus('bureau', 'ON')">Allumer</button>
+                    <button class="wid_button" onclick="updateStatus('bureau', 'OFF')">Eteindre</button>
+                </div>
+                
+                <div class="widjet">
+                    <h1>Allumer/eteindre la lampe de la chambre :</h1>
+                    <button class="wid_button" onclick="updateStatus('chambre', 'ON')">Allumer</button>
+                    <button class="wid_button" onclick="updateStatus('chambre', 'OFF')">Eteindre</button>
+                </div>
+                
+                <div class="widjet">
+                    <h1>Allumer/&eacute;teindre l'alarme :</h1>
+                    <button class="wid_button" onclick="updateAlarme('ON')">Allumer</button>
+                    <button class="wid_button" onclick="updateAlarme('OFF')">Eteindre</button>
+                </div>
+            </div>
+            <div class="section parametres">
+                <br>
+                <div class="widjet">
+                    <h1>Modifier l'heure du r&eacute;veil :</h1>
+                    <input type="time" id="heureInput">
+                    <button onclick="validerHeure()">Valider</button>
+                </div>
+                <div class="widjet">
+                    <h1>Changer de style :</h1>
+                    <ul>
+                        <li><button onclick="changerStyle('#e7e7e7', '#0091d4', '#fff', '#007db8', '#0091d4', '#fff', '#e7e7e7', '#fff')">Changer de Style en bleu</button></li>
+                        <li><button onclick="changerStyle('#e7e7e7', '#00d471', '#fff', '#05b160', '#00d471', '#fff', '#e7e7e7', '#fff')">Changer de Style vert</button></li>
+                        <li><button onclick="changerStyle('#e7e7e7', '#d40000', '#fff', '#b80000', '#d40000', '#fff', '#e7e7e7', '#fff')">Changer de Style rouge</button></li>
+                        <li><button onclick="changerStyle('#e7e7e7', '#35424a', '#fff', '#5f6f79', '#35424a', '#fff', '#e7e7e7', '#fff')">Changer de Style gris</button></li>
+                    </ul>
+                </div>
+                <div class="widjet">
+                    <h1>Mettre/enlever le mode sombre :</h1>
+                    <button onclick="changerStyle('#121212', '#003c5d', '#fff', '#004c7d', '#00b0f0', '#333', '#474747', '#fff')">Acctiver</button>
+                    <button onclick="changerStyle('#e7e7e7', '#0091d4', '#fff', '#007db8', '#0091d4', '#fff', '#e7e7e7', '#fff')">Enlever</button>
+                </div>
+                <div class="widjet">
+                    <button id="logoutBtn">Se déconnecter</button>
+                </div>
+            </div>
+        </div>
+        
         
         
         <button id="logoutBtn">Se déconnecter</button>
