@@ -54,7 +54,7 @@ header h1 {
 .menu {
     position: fixed;
     top: var(--height-bandeau);
-    right: calc(0% - var(--width-menu));
+    right: 0;
     width: var(--width-menu);
     height: 100%;
     background-color: var(--bg-menu);
