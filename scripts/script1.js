@@ -1,9 +1,3 @@
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.14.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.14.0/firebase-auth-compat.js"></script>
-
-
-
 emailjs.init('TsfbNCBs576Ka422a');
 
 const firebaseConfig = {
