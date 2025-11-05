@@ -48,3 +48,58 @@ header h1 {
 .date:hover {
     transform: scale(2);
 }
+
+.menu {
+    position: fixed;
+    top: var(--height-bandeau);
+    right: calc(0% - var(--width-menu));
+    width: var(--width-menu);
+    height: 100%;
+    background-color: var(--bg-menu);
+    overflow-y: auto;
+    transition: right 0.5s ease;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.menu ul li {
+    justify-content: center;
+    align-items: center;
+}
+
+.menu ul {
+    list-style: flex;
+    padding: 0% 0%;
+    padding-right: 10%;
+    position: relative;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10%;
+}
+
+.menu ul li {
+    margin: 10px 10px;
+}
+
+.menu ul li button {
+    color: var(--text-bandeau);
+    text-decoration: none;
+    border-radius: 5px;
+    border: 0px;
+    background-color: var(--bg-menu);
+    padding: 3% 5%;
+    font-size: 100%;
+    transition: transform 0.3s ease;
+}
+
+.menu ul li button:hover {
+    text-decoration: underline;
+    background-color: var(--bg-bandeau);
+    transform: scale(1.3);
+}
+
+.menu.open {
+    right: 0%;
+}
