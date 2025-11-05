@@ -33,3 +33,18 @@ header h1 {
     top: 20%;
     background-color: var(--bg-bandeau);
 }
+
+.date {
+    position: absolute;
+    left: 3%;
+    top: 25%;
+    color: var(--text-bandeau);
+    display: block;
+    z-index: 101;
+    transition: transform 0.3s ease;
+    padding: 1% 1%;
+}
+
+.date:hover {
+    transform: scale(2);
+}
