@@ -12,4 +12,5 @@ header {
     top: 0%;
     left: 0%;
     background-color: var(--bg-bandeau);
+    color: var(--text-bandeau);
 }
