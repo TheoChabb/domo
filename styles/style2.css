@@ -17,7 +17,7 @@ header {
     color: var(--text-bandeau);
 }
 
-header a {
+.imgMenu {
     height: var(--height-btn-menu);
     top: 50%;
     transform: translateY(-50%);
