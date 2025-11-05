@@ -13,5 +13,6 @@ function afficherHeure() {
   document.getElementById("date").textContent = heureActuelle;
   document.getElementById("dateTel").textContent = heureActuelle;
 
+  alert(heureActuelle);
   setTimeout(afficherHeure, 1000);
 }
