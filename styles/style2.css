@@ -107,3 +107,13 @@ header h1 {
 .menu.open {
     right: 0%;
 }
+
+.dateTel {
+    position: absolute;
+    color: var(--text-bandeau);
+    z-index: 1001;
+    display: none;
+    top: 85%;
+    left: 50%;
+    transform: translate(-50%, -100%);
+}
