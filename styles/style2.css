@@ -3,6 +3,7 @@
     --bg-bandeau: #0091d4;
     --height-bandeau: 13%;
     --text-bandeau: #fff;
+    --height-btn-menu: 60%;
 }
 
 header {
@@ -13,4 +14,11 @@ header {
     left: 0%;
     background-color: var(--bg-bandeau);
     color: var(--text-bandeau);
+}
+
+header a {
+    height: var(--height-btn-menu);
+    top: 50%;
+    transform: translateY(-50%);
+    right: 10%;
 }
