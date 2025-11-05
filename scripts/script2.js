@@ -1,9 +1,6 @@
 function toggleMenu() {
   const menu = document.getElementById('menu');
-  const page = document.getElementById('page');
   menu.classList.toggle('open');
-  page.classList.toggle('open');
-  page.classList.toggle('open2');
 }
 
 function afficherHeure() {
