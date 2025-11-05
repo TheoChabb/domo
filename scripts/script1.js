@@ -20,9 +20,6 @@ auth.onAuthStateChanged(async user => {
     return;
   }
 
-  // connecté
-  document.getElementById("user-info").innerText = "Connecté en tant que : " + user.email;
-
   // Envoi d'un mail automatique pour nouvelle connexion
   const message = `Nouvelle connexion réussie sur votre espace domotique.\nCompte : ${user.email}\nHeure : ${new Date().toLocaleString()}`;
   await sendMail("Nouvelle connexion !", "domo@contact.fr", message, user.email);
