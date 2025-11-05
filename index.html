@@ -2,13 +2,134 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Accueil</title>
+  <title>Domotique - </title>
   <link rel="stylesheet" href="styles/style2.css">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
-  <h1>Bienvenue sur votre site sécurisé !</h1>
-  <p id="user-info"></p>
+  <div class="menu" id="menu">
+        <ul>
+            <li><button onclick="changeSection(0)">Accueil</button></li>
+            <li><button onclick="changeSection(1)">Domotique</button></li>
+            <li><button onclick="changeSection(2)">Music</button></li>
+            <li><button onclick="changeSection(3)">Param&egrave;tres</button></li>
+        </ul>
+        <div id="dateTel" class="dateTel"></div>
+    </div>
+    <header>
+        <div id="date" class="date"></div>
+        <h1>Domotique</h1>
+        <a onclick="toggleMenu()"><img class="imgMenu" src="images/imgMenu.png"></a>
+    </header>
+
+
+    
+    <div class="page" id="page">
+        <div class="section accueil">
+            <br>
+            <div class="widjet">
+                <h1>Statuts lampes :</h1>
+                <p> Lampe chambre : <span id="lampeChambre">Chargement...</span><br>
+                    Lampe bureau : <span id="lampeBureau">Chargement...</span><br>
+                </p>
+            </div>
+            
+            <div class="widjet">
+                <h1>Temp&eacute;rature int&eacute;rieure :</h1>
+                <p> Temp&eacute;rature : <span id="tempInt">Chargement...</span>°C<br>
+                    Humidit&eacute; : <span id="humiInt">Chargement...</span>%<br>
+                </p>
+            </div>
+            
+            <div class="widjet">
+                <h1>Temp&eacute;rature ext&eacute;rieure :</h1>
+                <p> Temp&eacute;rature : <span id="tempExt">Chargement...</span>°C<br>
+                    Humidit&eacute; : <span id="humiExt">Chargement...</span>%<br>
+                </p>
+            </div>
+            
+            <div class="widjet">
+                <h1>Alarme :</h1>
+                <p>Alarme : <span id="alarme">Chargement...</span>
+                </p>
+            </div>
+        </div>
+        <div class="section domotique">
+            <br>
+            <div class="widjet">
+                <h1>Allumer/eteindre la lampe du bureau :</h1>
+                <button class="wid_button" onclick="updateStatus('bureau', 'ON')">Allumer</button>
+                <button class="wid_button" onclick="updateStatus('bureau', 'OFF')">Eteindre</button>
+            </div>
+            
+            <div class="widjet">
+                <h1>Allumer/eteindre la lampe de la chambre :</h1>
+                <button class="wid_button" onclick="updateStatus('chambre', 'ON')">Allumer</button>
+                <button class="wid_button" onclick="updateStatus('chambre', 'OFF')">Eteindre</button>
+            </div>
+            
+            <div class="widjet">
+                <h1>Allumer/&eacute;teindre l'alarme :</h1>
+                <button class="wid_button" onclick="updateAlarme('ON')">Allumer</button>
+                <button class="wid_button" onclick="updateAlarme('OFF')">Eteindre</button>
+            </div>
+        </div>
+        <div class="section music" style="display: flex; flex-wrap: wrap;">
+            <br>
+            <div class="widjet" style="width: 310px; display: flex; padding: 10px 10px; position: relative;">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTveYFxButEl7D36QS4m84oKZnU4Hu9mYamXQ&s  " height="300px">
+            </div>
+            
+            <div class="widjet" style="width: 310px; display: flex; padding: 10px 10px; position: relative;">
+                <img src="https://yt3.googleusercontent.com/s_5PfxJQU8Xvzedu_NlV-lBnpasJ0vl9BOXKH9G3EtMspPRQg5YMWz_rJIW5d9aVPBYQk3OTKQ=s900-c-k-c0x00ffffff-no-rj" height="300px">
+            </div>
+            
+            <div class="widjet" style="width: 310px; display: flex; padding: 10px 10px; position: relative;">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIueNJV_vfKhoTu9uThPUOJd_rtL1c0K3iMA&s" height="300px">
+            </div>
+            
+            <div class="widjet" style="width: 310px; display: flex; padding: 10px 10px; position: relative;">
+                <img src="https://images.lesindesradios.fr/fit-in/1100x2000/filters:format(webp)/radios/voltage/importrk/news/original/5af2eb14ca3c74.34604632.jpg" height="300px">
+            </div>
+            
+            <div class="widjet" style="width: 310px; display: flex; padding: 10px 10px; position: relative;">
+                    <img src="https://i0.wp.com/mbote.cd/app/uploads/2022/11/146E64E2-84D6-4DE5-8646-947C938EBE37.jpeg?fit=554%2C554&ssl=1" height="300px">
+            </div>
+        </div>
+        <div class="section parametres">
+            <br>
+            <div class="widjet">
+                <h1>Modifier l'heure du r&eacute;veil :</h1>
+                <input type="time" id="heureInput">
+                <button onclick="validerHeure()">Valider</button>
+            </div>
+            <div class="widjet">
+                <h1>Changer de style :</h1>
+                <ul>
+                    <li><button onclick="changerStyle('#e7e7e7', '#0091d4', '#fff', '#007db8', '#0091d4', '#fff', '#e7e7e7', '#fff')">Changer de Style en bleu</button></li>
+                    <li><button onclick="changerStyle('#e7e7e7', '#00d471', '#fff', '#05b160', '#00d471', '#fff', '#e7e7e7', '#fff')">Changer de Style vert</button></li>
+                    <li><button onclick="changerStyle('#e7e7e7', '#d40000', '#fff', '#b80000', '#d40000', '#fff', '#e7e7e7', '#fff')">Changer de Style rouge</button></li>
+                    <li><button onclick="changerStyle('#e7e7e7', '#35424a', '#fff', '#5f6f79', '#35424a', '#fff', '#e7e7e7', '#fff')">Changer de Style gris</button></li>
+                </ul>
+            </div>
+            <div class="widjet">
+                <h1>Mettre/enlever le mode sombre :</h1>
+                <button onclick="changerStyle('#121212', '#003c5d', '#fff', '#004c7d', '#00b0f0', '#333', '#474747', '#fff')">Acctiver</button>
+                <button onclick="changerStyle('#e7e7e7', '#0091d4', '#fff', '#007db8', '#0091d4', '#fff', '#e7e7e7', '#fff')">Enlever</button>
+            </div>
+            <div class="widjet">
+                <h1>Se d&eacute;connecter :</h1>
+                <a href="login.php?logout"><button class="deco">D&eacute;connection</button></a>
+            </div>
+        </div>
+    </div>
+
+  
+
+
+
+
+  
   <button id="logoutBtn">Se déconnecter</button>
 
   <!-- EmailJS -->
