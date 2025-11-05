@@ -5,6 +5,8 @@
     --text-bandeau: #fff;
     --height-btn-menu: 60%;
     --font-size-h1-bandeau: 360%;
+    --width-menu: 300px;
+    --bg-menu: #007db8;
 }
 
 header {
