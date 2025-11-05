@@ -84,6 +84,7 @@ header h1 {
 }
 
 .menu ul li button {
+    position: absolute;
     color: var(--text-bandeau);
     text-decoration: none;
     border-radius: 5px;
