@@ -1,14 +1,12 @@
 :root {
     --bg: #e7e7e7;
     --bg-bandeau: #0091d4;
-    --text-bandeau: #fff;
-    --bg-menu: #007db8;
-    --text-widjet: #0091d4;
-    --text-widjet2: #fff;
-    --bg-widjet: #fff;
     --height-bandeau: 13%;
-    --height-h1: -15%;
-    --width-menu: 15%;
-    --bg-button: #e7e7e7;
-    --button: black;
+    --text-bandeau: #fff;
+}
+
+header {
+    width: 100%;
+    height: var(--height-bandeau);
+    background-color: var(--bg-bandeau);
 }
