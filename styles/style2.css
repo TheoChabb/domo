@@ -6,8 +6,10 @@
 }
 
 header {
-    position: absolute;
+    position: fixed;
     width: 100%;
     height: var(--height-bandeau);
+    top: 0%;
+    left: 0%;
     background-color: var(--bg-bandeau);
 }
