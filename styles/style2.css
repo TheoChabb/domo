@@ -17,16 +17,19 @@ header {
     color: var(--text-bandeau);
 }
 
-.imgMenu {
-    height: var(--height-btn-menu);
+header h1 {
+    position: absolute;
+    left: 30%;
     top: 50%;
     transform: translateY(-50%);
-    right: 10%;
+    font-size: var(--font-size-h1-bandeau);
+    color: var(--text-bandeau);
 }
 
-header h1 {
-    left: 10%;
-    font-size: var(--font-size-h1-bandeau);
-    top: 50%;
-    transform: translateY(-50%);
+.imgMenu {
+    position: absolute;
+    right: 5%;
+    height: var(--height-btn-menu);
+    top: 20%;
+    background-color: var(--bg-bandeau);
 }
