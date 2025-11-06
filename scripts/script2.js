@@ -3,8 +3,11 @@ window.onload = function() {
 };
 
 function toggleMenu() {
-    const menu = document.getElementById('menu');
-    menu.classList.toggle('open');
+  const menu = document.getElementById('menu');
+  const page = document.getElementById('page');
+  menu.classList.toggle('open');
+  page.classList.toggle('open');
+  page.classList.toggle('open2');
 }
 
 function afficherHeure() {
@@ -18,4 +21,12 @@ function afficherHeure() {
     document.getElementById("dateTel").textContent = heureActuelle;
     
     setTimeout(afficherHeure, 1000);
+}
+
+let currentIndex = 0;
+function changeSection(index) {
+  const container = document.getElementById('page');
+  currentIndex = index;
+  container.style.transform = `translateY(-${index * 100}%)`;
+  toggleMenu();
 }
