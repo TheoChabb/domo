@@ -10,6 +10,13 @@
     --height-h1: -15%;
 }
 
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: var(--bg);
+    overflow: hidden;
+}
+
 header {
     position: fixed;
     width: 100%;
