@@ -117,3 +117,26 @@ header h1 {
     left: 50%;
     transform: translate(-50%, -100%);
 }
+
+.page {
+    position: absolute;
+    left: 0%;
+    width: 100%;
+    height: calc(100% - var(--height-bandeau));
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.8s ease-in-out;
+    top: var(--height-bandeau);
+}
+
+.section {
+    min-height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    font-size: 130%;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+}
