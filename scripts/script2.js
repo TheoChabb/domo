@@ -1,5 +1,10 @@
 window.onload = function() {
     afficherHeure();
+    const sectionHeight = window.innerHeight;
+    window.scrollTo({
+        top: 0 * sectionHeight,
+        behavior: 'smooth'
+    });
 };
 
 function toggleMenu() {
