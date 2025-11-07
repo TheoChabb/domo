@@ -191,3 +191,15 @@ header h1 {
     color: var(--text-widjet2);
     transform: scale(1.1);
 }
+
+.parametres .widjet ul {
+    list-style: none;
+}
+
+.parametres .widjet li {
+    height: 30%;
+    margin: 1% 1%;
+}
+.parametres .widjet button {
+    height: 50px;
+}
