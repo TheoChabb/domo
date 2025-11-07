@@ -203,3 +203,20 @@ header h1 {
 .parametres .widjet button {
     height: 50px;
 }
+
+.parametres #heureInput {
+    width: 40%;
+    padding: 8px;
+    border: 0px;
+    height: 18%;
+    border-radius: 10px;
+    background-color: var(--bg-button);
+    color: var(--button);
+    font-weight: bold;
+    font-size: 120%;
+    margin-bottom: 2%;
+    transition: transform 0.3s ease;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
