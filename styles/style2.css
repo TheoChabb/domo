@@ -8,6 +8,11 @@
     --width-menu: 15%;
     --bg-menu: #007db8;
     --height-h1: -15%;
+    --text-widjet: #0091d4;
+    --text-widjet2: #fff;
+    --bg-widjet: #fff;
+    --bg-button: #e7e7e7;
+    --button: black;
 }
 
 body {
