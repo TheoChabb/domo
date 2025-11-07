@@ -150,3 +150,39 @@ header h1 {
     overflow-y: auto;
     scroll-behavior: smooth;
 }
+
+.widjet {
+    margin: 1% auto;
+    background-color: var(--bg-widjet);
+    border-radius: 8px;
+    width: 80%;
+    height: auto;
+    padding: 1% 1%;
+}
+
+.widjet h1 {
+    color: var(--text-widjet);
+}
+
+.widjet p {
+    color: var(--text-widjet);
+}
+
+.widjet button {
+    color: var(--button);
+    width: 40%;
+    border-radius: 10px;
+    border: 0px;
+    font-weight: bold;
+    font-size: 120%;
+    height: 30%;
+    background-color: var(--bg-button);
+    margin-bottom: 2%;
+    transition: transform 0.3s ease;
+}
+
+.widjet button:hover {
+    background-color: var(--bg-bandeau);
+    color: var(--text-widjet2);
+    transform: scale(1.1);
+}
