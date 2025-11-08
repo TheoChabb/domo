@@ -18,7 +18,7 @@ fichUser = await getUrl("data/users.json");
         
         for(elementPage of fichMainData.elements){
             id = elementPage;
-            document.getElementById("page").innerHTML = document.getElementById("page").innerHTML + '<div id="' + id + '" class="' + id + '"></div>';
+            document.getElementById("section_tache").innerHTML = document.getElementById("section_tache").innerHTML + '<div id="' + id + '" class="' + id + '"></div>';
             dataElementPage = fichMainData[elementPage];
             for(element in dataElementPage){
                 
