@@ -128,7 +128,7 @@ async function sendMail(title, name, message, targetEmail) {
     email: targetEmail
   };
 
-  return emailjs.send(serviceID, templateID, params)
-    .then(r => { console.log("📧 Mail envoyé", r); return true; })
-    .catch(err => { console.error("Erreur envoi mail:", err); return false; });
+  //return emailjs.send(serviceID, templateID, params)
+    //.then(r => { console.log("📧 Mail envoyé", r); return true; })
+    //.catch(err => { console.error("Erreur envoi mail:", err); return false; });
 }
