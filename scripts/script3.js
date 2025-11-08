@@ -11,7 +11,7 @@ async function getUrl(url) {
 chargerTaches('Theo')
 
 async function chargerTaches(user){
-    fichUser = await getUrl("data/users.json");
+    fichUser = await getUrl("data/taches/users.json");
     fichMainData = await getUrl("data/taches/main_data.json");
     fichData = await getUrl("data/taches/data_taches.json");
     
