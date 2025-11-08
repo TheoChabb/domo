@@ -72,10 +72,6 @@
                     <button class="wid_button" onclick="updateAlarme('OFF')">Eteindre</button>
                 </div>
             </div>
-
-
-
-            
             <div class="section taches" id="section_tache">
                 <div id="barreOutil" class="barreOutil" style="display: flex;">
                     <input id="nomTache" class="entreText" type="text" placeholder="Titre de la tache" onkeydown="envoyer(event, 'add', 'Theo')">
@@ -142,11 +138,34 @@
                         <div id="section_dimanche" class="dropzone" data-col="dimanche" style="display: flex;"></div>
                     </section>
                 </div>
-            </div>       
-
-
-
-            
+                <div id="clickDroit" class="clickDroit">
+                    <ul id="ul_clickDroit">
+                        <li id="modifierTache">✏️ Modifier</li>
+                        <li id="historiqueTache">📜 Historique</li>
+                        <li id="supprimerTache">🗑️ Supprimer</li>
+                    </ul>
+                </div>
+                <div id="popup" class="popup">
+                    <div class="popup-content">
+                        <h3>Modifier la tâche</h3>
+                        <label for="inputNomTache">Titre :</label>
+                        <input id="inputNomTache" type="text">
+                        <div id="boutons" class="boutons">
+                            <button id="fermerPopup">Annuler</button>
+                            <button id="enregistrerPopup">Enregistrer</button>
+                        </div>
+                    </div>
+                </div>
+                <div id="popupHistorique" class="popupHistorique">
+                    <div class="popup-contentHistorique">
+                        <h3>Historique de la tâche</h3>
+                        <pre id="affichagePopupHistorique"></pre>
+                        <div id="boutonsHistorique" class="boutons">
+                            <button id="fermerPopupHistorique">Annuler</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="section parametres">
                 <br>
                 <div class="widjet">
