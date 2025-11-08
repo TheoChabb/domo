@@ -220,7 +220,7 @@ function modifierTache(lastTache, user, idTache) {
 }
 
 async function afficherPopupHistoriqueTache(idTache, user){
-    fichData = await getUrl("data/data_taches.json");
+    fichData = await getUrl("data/taches/data_taches.json");
 
     const popupHistorique = document.getElementById("popupHistorique");
     const popupContentHistorique = document.getElementById("popup-contentHistorique");
