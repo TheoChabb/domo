@@ -1,3 +1,13 @@
+async function getUrl(url) {
+    try {
+        const response = await fetch(url);
+        const data = await response.json();
+        return(data);
+    } catch (error) {
+        return("Erreur in get URL : " + url);
+    }
+}
+
 chargerTaches('Theo')
 
 async function chargerTaches(user){
