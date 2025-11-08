@@ -154,7 +154,7 @@ async function chargerCompteur(user) {
 }
 
 async function afficherPopupModifierTache(idTache, user) {
-    fichData = await getUrl("data/data_taches.json");
+    fichData = await getUrl("data/taches/data_taches.json");
 
     const popup = document.getElementById("popup");
     const popupContent = document.getElementById("popup-content");
@@ -273,7 +273,7 @@ async function historiqueTache(idTache, user) {
 }
 
 async function findNewFichData() {
-    return await getUrl("data/data_taches.json");
+    return await getUrl("data/taches/data_taches.json");
 }
 
 setInterval(async () => {
