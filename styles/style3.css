@@ -7,22 +7,10 @@
     --degrade-droite: #0ea5a4;
 
     --taille-texte: 200%;
-
-    --police-ecriture: Inter, system-ui, "Segoe UI", Arial, sans-serif;
 }
 
 *{
     box-sizing: border-box;
-    font-family: var(--police-ecriture);
-}
-
-body{
-    margin: 0;
-    background: var(--bg);
-    color: var(--texte);
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
 }
 
 .bandeau {
