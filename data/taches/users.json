@@ -1,0 +1,32 @@
+{
+    "Theo":{
+        "name": "Theo",
+        "password": "Theo31.#",
+        "cle": "zauogbhezib65431635kqhiqegfvzi5e7gh4e4bh5e34gbz4er",
+        "color": "#bae6fd"
+    },
+    "Lohan":{
+        "name": "Lohan",
+        "password": "Theo31.#",
+        "cle": "rsth4eh34rtj34erj354nr34herz4jzers4jt3serh747gjsrj",
+        "color": "#bbf7d0"
+    },
+    "Karine":{
+        "name": "Karine",
+        "password": "Theo31.#",
+        "cle": "t74rt7jdrf4j85s3t4s384th3dx4jh854f3j4r3s4hjh43sehr",
+        "color": "#e9d5ff"
+    },
+    "Christophe":{
+        "name": "Christophe",
+        "password": "Theo31.#",
+        "cle": "eq35rh74r3st4j34zset34qe64e354h3d533q4edhf3hs3s4er",
+        "color": "#fecaca"
+    },
+    "Admin":{
+        "name": "Admin",
+        "password": "Theo31.#",
+        "cle": "kgvbvbt35nh4by3r4jn4b3ers4verkhgvbhedh2er4d3f4d3st",
+        "color": "#f3f4f6"
+    }
+}
