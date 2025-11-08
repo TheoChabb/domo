@@ -141,7 +141,7 @@ function closeContextMenu(){
     backContextMenu.style.display = "none";    
 }
 async function chargerCompteur(user) {
-    fichData = await getUrl("data/data_taches.json");
+    fichData = await getUrl("data/taches/data_taches.json");
     for(section in fichMainData.body){
         i = 0;
         for(tache in fichData){
