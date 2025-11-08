@@ -12,7 +12,6 @@ chargerTaches('Theo')
 
 async function chargerTaches(user){
     fichMainData = await getUrl("data/taches/main_data.json");
-    fichUser = await getUrl("data/taches/users.json");
     fichData = await getUrl("data/taches/data_taches.json");
     
     for(section in fichMainData.body){
