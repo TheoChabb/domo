@@ -1,0 +1,162 @@
+{
+    "elements": ["bandeau", "barreOutil", "body", "clickDroit", "popup", "popupHistorique"],
+
+    "bandeau":{
+        "element1":{
+            "id": "bandeau_titre",
+            "titre": "Tableau des tâches",
+            "type": "text",
+            "style": "titre"
+        },
+        "element2":{
+            "id": "bandeau_user",
+            "type": "span",
+            "type2":{
+                "type": "a",
+                "href": "parametres",
+                "style": "lien"
+            },
+            "style": "user"
+        }
+    },
+    "barreOutil":{
+        "element1":{
+            "id": "nomTache",
+            "type": "entreText",
+            "placeholder": "Titre de la tache",
+            "onkey_down": "add",
+            "style": "entreText"
+        },
+        "element2":{
+            "id": "selectColonne",
+            "type": "select",
+            "onkey_down": "add",
+            "style": "select"
+        },
+        "element3":{
+            "id": "boutonAjouter",
+            "style": "bouton",
+            "type": "bouton",
+            "on_click": "ajouterTache",
+            "value": "Ajouter la tâche"
+        }
+    },
+    "body":{
+        "section1":{
+            "name": "Lundi",
+            "id": "lundi",
+            "style": "section"
+        },
+        "section2":{
+            "name": "Mardi",
+            "id": "mardi",
+            "style": "section"
+        },
+        "section3":{
+            "name": "Mercredi",
+            "id": "mercredi",
+            "style": "section"
+        },
+        "section4 ":{
+            "name": "Jeudi",
+            "id": "jeudi",
+            "style": "section"
+        },
+        "section5":{
+            "name": "Vendredi",
+            "id": "vendredi",
+            "style": "section"
+        },
+        "section6":{
+            "name": "Samedi",
+            "id": "samedi",
+            "style": "section"
+        },
+        "section7":{
+            "name": "Dimanche",
+            "id": "dimanche",
+            "style": "section"
+        }
+    },
+    "clickDroit":{
+        "element1":{
+            "id": "clickDroit",
+            "style": "clickDroit",
+            "type": "list",
+            "on_click": "closeContextMenu",
+            "option":{
+                "option1":{
+                    "id": "modifierTache",
+                    "value": "✏️ Modifier"
+                },
+                "option2":{
+                    "id": "historiqueTache",
+                    "value": "📜 Historique"
+                },
+                "option3":{
+                    "id": "supprimerTache",
+                    "value": "🗑️ Supprimer"
+                }
+            }
+        }
+    },
+    "popup":{
+        "element1":{
+            "id": "popup-content",
+            "style": "popup-content",
+            "type": "popup",
+            "value":{
+                "titre": "Modifier la tâche",
+                "label1":{
+                    "id": "labelNomTache",
+                    "value": "Titre :"
+                },
+                "input1":{
+                    "id": "inputNomTache",
+                    "type": "text"
+                },
+                "div":{
+                    "id": "boutons",
+                    "style": "boutons",
+                    "value":{
+                        "bouton1":{
+                            "id": "fermerPopup",
+                            "type": "bouton",
+                            "value": "Annuler"
+                        },
+                        "bouton2":{
+                            "id": "enregistrerPopup",
+                            "type": "bouton",
+                            "value": "Enregistrer"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "popupHistorique":{
+        "element1":{
+            "id": "popup-contentHistorique",
+            "style": "popup-contentHistorique",
+            "type": "popup",
+            "value":{
+                "titre": "Historique de la tâche",
+                "input1":{
+                    "id": "affichagePopupHistorique",
+                    "type": "pre"
+                },
+                "div":{
+                    "id": "boutonsHistorique",
+                    "style": "boutons",
+                    "value":{
+                        "bouton1":{
+                            "id": "fermerPopupHistorique",
+                            "type": "bouton",
+                            "value": "Annuler"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
