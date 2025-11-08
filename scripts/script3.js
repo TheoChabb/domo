@@ -1,12 +1,15 @@
 chargerTaches('Theo')
 
 async function chargerTaches(user){
+    fichMainData = await getUrl("data/taches/main_data.json");
+    fichUser = await getUrl("data/taches/users.json");
+    fichData = await getUrl("data/taches/data_taches.json");
+    
     for(section in fichMainData.body){
         idSection = "section_" + fichMainData.body[section].id;
         document.getElementById(idSection).innerHTML = null;
     }
 
-    fichData = await getUrl("data/taches/data_taches.json");
 
     localStorage.setItem("lastFichData", JSON.stringify(fichData));
 
