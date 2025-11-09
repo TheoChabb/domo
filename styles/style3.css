@@ -85,8 +85,7 @@
 
 .body .count {
     position: absolute;
-    text-align: right;
-    margin-right: 5%;
+    right: 5%;
     font-size: calc(var(--taille-texte) * 0.5);
     color: var(--texte-count);
 }
@@ -94,7 +93,167 @@
 .body .dropzone{
     flex-grow: 1;
     height: auto;
+    width: 100%;
     display: flex;
     flex-direction: column;
     gap: 8px;
+}
+
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+.popup-content {
+    background: var(--colonne);
+    padding: 20px;
+    padding-top: 0px;
+    border-radius: 12px;
+    min-width: 280px;
+    max-width: 90%;
+}
+
+.popup label {
+    display: block;
+    margin: 10px 0 4px;
+    font-size: calc(var(--taille-texte) * var(--fact-label));
+}
+
+.popup input, .popup select {
+    width: 100%;
+    padding: 6px 8px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: calc(var(--taille-texte) * 0.5);
+}
+
+.popup .boutons {
+    margin-top: 30px;
+    text-align: right;
+}
+
+.popup button {
+    padding: 6px 12px;
+    border-radius: 6px;
+    border: 0;
+    background: var(--degrade-droite);
+    color: white;
+    cursor: pointer;
+    margin-left: 6px;
+    font-size: calc(var(--taille-texte) * 0.45);
+}
+
+.clickDroit {
+    position: absolute;
+    background: var(--colonne);
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    display: none;
+    z-index: 1000;
+    min-width: 100px;
+}
+
+.clickDroit ul {
+    list-style: none;
+    margin: 0;
+    padding: 6px;
+}
+
+.clickDroit li {
+    padding: 8px 10px;
+    cursor: pointer;
+    border-radius: 6px;
+    font-size: calc(var(--taille-texte) * 0.5);
+}
+
+.clickDroit li:hover {
+    background: var(--degrade-droite);
+    color: white;
+}
+
+.tache {
+    margin: 8px 0;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: grab;
+    border: 1px solid #eef2f7;
+    transition: transform 0.15s, opacity 0.15s;
+}
+
+.tache.dragging {
+    opacity: 0.6;
+    transform: scale(0.98);
+}
+
+.tache .meta {
+    font-size: calc(var(--taille-texte) *0.4);
+    color: var(--texte-count);
+    margin-top: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.tache button {
+    background: transparent;
+    border: 0;
+    color: red;
+    cursor: pointer;
+    font-size: calc(var(--taille-texte) * 0.45);
+}
+
+
+.popupHistorique {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+.popup-contentHistorique {
+    background: var(--colonne);
+    padding: 20px;
+    padding-top: 0px;
+    border-radius: 12px;
+    min-width: 280px;
+    max-width: 90%;
+}
+
+.popupHistorique input {
+    width: 100%;
+    padding: 6px 8px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: calc(var(--taille-texte) * 0.5);
+}
+
+.popupHistorique .boutons {
+    margin-top: 30px;
+    text-align: right;
+}
+
+.popupHistorique button {
+    padding: 6px 12px;
+    border-radius: 6px;
+    border: 0;
+    background: var(--degrade-droite);
+    color: white;
+    cursor: pointer;
+    margin-left: 6px;
+    font-size: calc(var(--taille-texte) * 0.45);
 }
