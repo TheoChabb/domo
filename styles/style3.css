@@ -86,6 +86,7 @@
 .body .count {
     position: absolute;
     right: 5%;
+    top: 0%;
     font-size: calc(var(--taille-texte) * 0.5);
     color: var(--colonne);
 }
@@ -183,6 +184,7 @@
 .tache {
     margin: 8px 0;
     padding: 10px;
+    height: auto;
     border-radius: 8px;
     cursor: grab;
     border: 1px solid #eef2f7;
@@ -194,8 +196,12 @@
     transform: scale(0.98);
 }
 
+.tache .titre {
+    font-size: 80%;
+}
+
 .tache .meta {
-    font-size: calc(var(--taille-texte) *0.4);
+    font-size: calc(var(--taille-texte) *0.6);
     color: var(--texte-count);
     margin-top: 6px;
     display: flex;
@@ -208,7 +214,7 @@
     border: 0;
     color: red;
     cursor: pointer;
-    font-size: calc(var(--taille-texte) * 0.45);
+    font-size: calc(var(--taille-texte) * 0.5);
 }
 
 
