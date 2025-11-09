@@ -271,10 +271,10 @@
     width: 90%;
     background-color: var(--colone);
     border-radius: 20px;
-    height: 78%;
+    height: 100%;
     border: 5px solid black;
 }
 
 .section_cameras .chambre {
-    margin-top: 10%;
+    margin-top: 23%;
 }
