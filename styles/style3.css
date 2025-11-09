@@ -266,7 +266,6 @@
 }
 
 .section_cameras {
-    position: relative;
     margin-bottom: 10%;
     width: 90%;
     background-color: var(--colone);
