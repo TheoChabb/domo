@@ -77,6 +77,8 @@
 .body .section h2 {
     margin: 0;
     margin-left: 5%;
+    top: 50%;
+    transform: translateY(-50%);
     text-align: left;
     color: var(--colonne);
     font-size: calc(var(--taille-texte) * 0.55);
