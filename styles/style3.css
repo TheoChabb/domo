@@ -26,3 +26,11 @@
     background: var(--bg);
     font-size: calc(var(--taille-texte) * 0.5);
 }
+
+#section_tache .barreOutil .select{
+    padding: 0.5em 0.7em;
+    border-radius: 8px;
+    border: 1px solid #e6eef2;
+    background: var(--bg);
+    font-size: calc(var(--taille-texte) * 0.5);
+}
