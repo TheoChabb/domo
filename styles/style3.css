@@ -86,7 +86,7 @@
 .body .count {
     position: absolute;
     right: 5%;
-    top: 0%;
+    top: 10px;
     font-size: calc(var(--taille-texte) * 0.5);
     color: var(--colonne);
 }
@@ -198,7 +198,7 @@
 
 .tache .titre {
     font-size: 50%;
-    max-width: 100%;
+    width: 100%;
 }
 
 .tache .meta {
