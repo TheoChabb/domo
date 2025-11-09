@@ -36,8 +36,6 @@
     font-size: calc(var(--taille-texte) * 0.5);
 }
 
-
-
 .barreOutil button {
     width: 10%;
     border-radius: 8px;
@@ -57,4 +55,46 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     gap: 12px;
+}
+
+#section_tache .section {
+    background: var(--colonne);
+    border-radius: 12px;
+    padding: 12px;
+    min-height: 200px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.#section_tache .section header {
+    display: flex;
+    justify-content: space-between;
+    background: linear-gradient(90deg, var(--degrade-droite), var(--degrade-gauche));
+    align-items: center;
+    margin-bottom: 8px;
+    width: 100%;
+    height: 50px;
+    border-radius: 8px;
+}
+
+#section_tache .section h2 {
+    margin: 0;
+    margin-left: 5%;
+    color: var(--colonne);
+    font-size: calc(var(--taille-texte) * 0.55);
+}   
+
+#section_tache .count {
+    margin-right: 5%;
+    font-size: calc(var(--taille-texte) * 0.5);
+    color: var(--texte-count);
+}
+
+#section_tache .dropzone{
+    flex-grow: 1;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 }
