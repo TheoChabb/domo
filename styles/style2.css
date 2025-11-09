@@ -173,7 +173,7 @@ header h1 {
     color: var(--text-widjet);
 }
 
-button {
+.widjet button {
     color: var(--button);
     width: 40%;
     border-radius: 10px;
@@ -186,7 +186,7 @@ button {
     transition: transform 0.3s ease;
 }
 
-button:hover {
+.widjet button:hover {
     background-color: var(--bg-bandeau);
     color: var(--text-widjet2);
     transform: scale(1.1);
