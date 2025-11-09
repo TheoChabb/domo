@@ -44,10 +44,10 @@
     border: 1px solid #e6eef2;
     background-color: var(--bg);
     margin-bottom: 2%;
+    padding: 0.5em 0.7em;
 }
 
 .barreOutil button:hover {
-    padding: 0.5em 0.7em;
     color: #e6eef2;
     background-color: var(--bg-menu);
 }
