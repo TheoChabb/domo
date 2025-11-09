@@ -7,11 +7,20 @@
 
     --taille-texte: 200%;
     
-    --height-barreOutilTache: 10%;
+    --height-barreOutilTache: 7%;
 }
 
 #section_tache .barreOutil{
+    top: -1px;
     width: 100%;
     height: var(--height-barreOutilTache);
     background-color: var(--bg-bandeau);
+}
+
+#section_tache .barreOutil .entreText{
+    padding: 0.5em 0.7em;
+    border-radius: 8px;
+    border: 1px solid #e6eef2;
+    background: var(--bg);
+    font-size: calc(var(--taille-texte) * 0.5);
 }
