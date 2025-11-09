@@ -32,7 +32,7 @@ async function chargerTaches(user){
         //console.log("Bg : " + bgColor + "\nUser : " + utilisateurMaj + "\nColonne : " + colonneTache + "\nId : " + idTache + "\nTexte : " + valueElement + "\n");
 
         divTache = '<div class="tache" style="' + bgColor + '" draggable="true" data-id="' + idTache + '" data-user="' + user + '" style="" oncontextmenu="afficherContextMenu(' + idTache + ', event, \'' + user + '\'); return false;" >' + 
-                        '<strong class="title">' + valueElement + '</strong>' + 
+                        '<span class="title">' + valueElement + '</span>' + 
                         '<div class="meta">' +
                             '<span>👤 ' + utilisateurMaj + '</span>' +
                             '<button class="del" onclick="supprimerTache(' + "'" + idTache + "'" + ', ' + "'" + user + "'" + ')">✖</button>' +
