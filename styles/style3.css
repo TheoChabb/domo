@@ -5,19 +5,21 @@
     --texte-count: #6b7280
     --bg-bandeau: #0091d4;
 
-    --taille-texte: 200%;
+    --taille-texte: 120%;
     
     --height-barreOutilTache: 7%;
 }
 
 #section_tache .barreOutil{
-    top: -1px;
+    top: -5px;
     width: 100%;
     height: var(--height-barreOutilTache);
     background-color: var(--bg-bandeau);
 }
 
 #section_tache .barreOutil .entreText{
+    top: 50%;
+    transform: translateY(-50%);
     padding: 0.5em 0.7em;
     border-radius: 8px;
     border: 1px solid #e6eef2;
