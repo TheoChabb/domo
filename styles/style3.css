@@ -18,7 +18,7 @@
 
 #section_tache .barreOutil .entreText{
     padding: 0.5em 0.7em;
-    padding-top: calc(var(--height-barreOutilTache)/4);
+    margin-top: calc(var(--height-barreOutilTache)/4);
     border-radius: 8px;
     border: 1px solid #e6eef2;
     background: var(--bg);
