@@ -67,7 +67,6 @@
 
 .body .section header {
     background: var(--bg-bandeau);
-    align-items: center;
     position: relative;
     margin-bottom: 8px;
     width: 100%;
@@ -78,11 +77,13 @@
 .body .section h2 {
     margin: 0;
     margin-left: 5%;
+    text-align: left;
     color: var(--colonne);
     font-size: calc(var(--taille-texte) * 0.55);
 }   
 
 .body .count {
+    text-align: right;
     margin-right: 5%;
     font-size: calc(var(--taille-texte) * 0.5);
     color: var(--texte-count);
