@@ -60,10 +60,12 @@
 .body .section {
     background: var(--colonne);
     border-radius: 12px;
+    margin-top: 5%;
     padding: 12px;
     min-height: 200px;
     height: auto;
     display: flex;
+    max-width: 40%;
     flex-direction: column;
 }
 
