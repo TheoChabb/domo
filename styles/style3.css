@@ -264,3 +264,17 @@
     margin-left: 6px;
     font-size: calc(var(--taille-texte) * 0.45);
 }
+
+.section_cameras {
+    position: relative;
+    margin-bottom: 10%;
+    width: 90%;
+    transform: translateX(-50%);
+    background-color: var(--colone);
+    border-radius: 20%;
+    border: 5px solid black;
+}
+
+.section_cameras .chambre {
+    margin-top: 10%;
+}
