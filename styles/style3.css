@@ -12,7 +12,7 @@
 }
 
 #section_tache .barreOutil{
-    width: 100%;
+    width: 95%;
     padding-top: calc(var(--height-barreOutilTache)/2);
     padding-bottom: calc(var(--height-barreOutilTache)/2);
     background-color: var(--bg-bandeau);
@@ -52,6 +52,7 @@
 #section_tache {
     height: calc(100% - (var(--height-bandeau) + 10%));
     top: calc(var(--height-bandeau) + 10%);
+    background-color: black;
 }
 
 #section_tache .section {
