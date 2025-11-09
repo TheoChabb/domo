@@ -14,11 +14,12 @@
     width: 100%;
     height: var(--height-barreOutilTache);
     background-color: var(--bg-bandeau);
+    align-items: center;
+    justify-content: center;
 }
 
 #section_tache .barreOutil .entreText{
     padding: 0.5em 0.7em;
-    margin-top: calc(var(--height-barreOutilTache)/4);
     border-radius: 8px;
     border: 1px solid #e6eef2;
     background: var(--bg);
