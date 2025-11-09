@@ -70,21 +70,21 @@
     position: relative;
     margin-bottom: 8px;
     width: 100%;
-    height: 50px;
     border-radius: 8px;
 }
 
 .body .section h2 {
     margin: 0;
     margin-left: 5%;
-    top: 50%;
-    transform: translateY(-50%);
+    padding-top: 10px;
+    padding-bottom: 10px;
     text-align: left;
     color: var(--colonne);
     font-size: calc(var(--taille-texte) * 0.55);
 }   
 
 .body .count {
+    position: absolute;
     text-align: right;
     margin-right: 5%;
     font-size: calc(var(--taille-texte) * 0.5);
