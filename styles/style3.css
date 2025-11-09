@@ -6,7 +6,8 @@
     --bg-bandeau: #0091d4;
 
     --taille-texte: 200%;
-
+    
+    --height-barreOutilTache: 10%;
 }
 
 #section_tache .barreOutil{
