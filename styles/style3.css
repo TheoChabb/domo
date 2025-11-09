@@ -272,6 +272,7 @@
     transform: translateX(-50%);
     background-color: var(--colone);
     border-radius: 20%;
+    height: 78%;
     border: 5px solid black;
 }
 
