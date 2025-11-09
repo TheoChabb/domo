@@ -3,49 +3,19 @@
     --colonne: #ffffff;
     --texte: #111111;
     --texte-count: #6b7280;
-    --degrade-gauche: #06b6d4;
-    --degrade-droite: #0ea5a4;
+    --bg-bandeau: #0091d4;
 
     --taille-texte: 200%;
 }
 
-*{
-    box-sizing: border-box;
-}
-
-.bandeau {
-    padding: 18px 24px;
-    background: linear-gradient(90deg, var(--degrade-droite), var(--degrade-gauche));
-    color: white;
-}
-
-.bandeau .titre{
-    margin: 0;
-    font-size: calc(var(--taille-texte) * 0.65);
-}
-
-.bandeau .user{
-    margin: 0;
-    position: absolute;
-    right: 5%;
-    font-size: calc(var(--taille-texte) * 0.65);
-}
-
-.bandeau .lien{
-    text-decoration: none;
-    color: inherit;
-}
-
 .barreOutil{
-    display: flex;
+    position: fixed;
+    width: 100%;
     gap: 12px;
-    align-items: center;
     margin-bottom: 12px;
     flex-wrap: wrap;
-}
-
-.barreOutil{
     margin: 2% 2%;
+    background-color: var'--bg-bandeau);
 }
 
 .barreOutil input, .barreOutil select {
