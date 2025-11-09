@@ -51,15 +51,14 @@
 
 .body{
     width: 90%;
-    background-color: black;
-    padding-top: 70px;
+    padding-top: 40px;
 }
 
 .body .section {
     background: var(--colonne);
     border-radius: 12px;
     padding: 12px;
-    margin-bottom: 70px;
+    margin-bottom: 40px;
     min-height: 200px;
     height: auto;
     position: relative;
