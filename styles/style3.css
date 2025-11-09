@@ -59,7 +59,7 @@
     background: var(--colonne);
     border-radius: 12px;
     padding: 12px;
-    padding-bottom: 70px;
+    margin-bottom: 70px;
     min-height: 200px;
     height: auto;
     position: relative;
