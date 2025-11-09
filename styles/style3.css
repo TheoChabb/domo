@@ -49,6 +49,11 @@
     background-color: var(--bg-menu);
 }
 
+#section_tache {
+    height: calc(100% - (var(--height-bandeau) + 10%));
+    top: calc(var(--height-bandeau) + 10%);
+}
+
 #section_tache .section {
     background: var(--colonne);
     border-radius: 12px;
