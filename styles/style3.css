@@ -87,7 +87,7 @@
     position: absolute;
     right: 5%;
     font-size: calc(var(--taille-texte) * 0.5);
-    color: var(--texte-count);
+    color: var(--colonne);
 }
 
 .body .dropzone{
