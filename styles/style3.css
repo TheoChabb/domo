@@ -67,10 +67,9 @@
 }
 
 .body .section header {
-    display: flex;
-    justify-content: space-between;
-    background: linear-gradient(90deg, var(--degrade-droite), var(--degrade-gauche));
+    background: var(--bg-bandeau);
     align-items: center;
+    position: relative;
     margin-bottom: 8px;
     width: 100%;
     height: 50px;
