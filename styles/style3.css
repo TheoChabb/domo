@@ -9,7 +9,7 @@
 }
 
 .barreOutil{
-    position: fixed;
+    position: absolute;
     width: 100%;
     gap: 12px;
     margin-bottom: 12px;
