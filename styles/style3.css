@@ -17,6 +17,7 @@
 }
 
 #section_tache .barreOutil .entreText{
+    top: 50%;
     transform: translateY(50%);
     padding: 0.5em 0.7em;
     border-radius: 8px;
