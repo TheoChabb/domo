@@ -49,15 +49,17 @@
     background-color: var(--bg-menu);
 }
 
-#section_tache {
-    height: calc((100% - (var(--height-bandeau) + 10%)) - 20%);
-    top: calc(var(--height-bandeau) + 20%);
-    width: calc(100% - 20%);
-    left: 10%;
-    background-color: black;
+
+
+.body{
+    width: 90%;
+    transform: translateX(5%);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 12px;
 }
 
-#section_tache .section {
+.body .section {
     background: var(--colonne);
     border-radius: 12px;
     padding: 12px;
@@ -67,7 +69,7 @@
     flex-direction: column;
 }
 
-.#section_tache .section header {
+.body .section header {
     display: flex;
     justify-content: space-between;
     background: linear-gradient(90deg, var(--degrade-droite), var(--degrade-gauche));
@@ -78,20 +80,20 @@
     border-radius: 8px;
 }
 
-#section_tache .section h2 {
+.body .section h2 {
     margin: 0;
     margin-left: 5%;
     color: var(--colonne);
     font-size: calc(var(--taille-texte) * 0.55);
 }   
 
-#section_tache .count {
+.body .count {
     margin-right: 5%;
     font-size: calc(var(--taille-texte) * 0.5);
     color: var(--texte-count);
 }
 
-#section_tache .dropzone{
+.body .dropzone{
     flex-grow: 1;
     height: auto;
     display: flex;
