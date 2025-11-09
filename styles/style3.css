@@ -16,7 +16,6 @@
     padding-top: calc(var(--height-barreOutilTache)/2);
     padding-bottom: calc(var(--height-barreOutilTache)/2);
     background-color: var(--bg-bandeau);
-    align-items: left;
     padding-left: 5%;
 }
 
