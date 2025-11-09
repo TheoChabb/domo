@@ -266,10 +266,10 @@
 }
 
 .section_cameras {
-    margin-top: 10%;
+    margin-top: 5%;
     width: 90%;
     background-color: var(--colone);
     border-radius: 20px;
-    height: 100%;
+    height: 5px;
     border: 5px solid black;
 }
