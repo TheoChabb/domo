@@ -9,6 +9,8 @@
 
 }
 
-#section_tache {
-    
+#section_tache .barreOutil{
+    width: 100%;
+    height: var(--height-barreOutilTache);
+    background-color: var(--bg-bandeau);
 }
