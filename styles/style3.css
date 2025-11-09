@@ -63,7 +63,7 @@
     min-height: 200px;
     height: auto;
     position: relative;
-    width: 100%;
+    width: calc(100% - 24px);
 }
 
 .body .section header {
