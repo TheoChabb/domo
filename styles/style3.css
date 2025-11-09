@@ -36,7 +36,7 @@
     font-size: calc(var(--taille-texte) * 0.45);
 }
 
-.body{
+.section_taches{
     width: 90%;
     transform: translateX(5%);
     display: grid;
@@ -44,7 +44,7 @@
     gap: 12px;
 }
 
-.body .section {
+.section_taches .section {
     background: var(--colonne);
     border-radius: 12px;
     padding: 12px;
@@ -54,7 +54,7 @@
     flex-direction: column;
 }
 
-.body .section header {
+.section_taches .section header {
     display: flex;
     justify-content: space-between;
     background: linear-gradient(90deg, var(--degrade-droite), var(--degrade-gauche));
@@ -65,20 +65,20 @@
     border-radius: 8px;
 }
 
-.body .section h2 {
+.section_taches .section h2 {
     margin: 0;
     margin-left: 5%;
     color: var(--colonne);
     font-size: calc(var(--taille-texte) * 0.55);
 }   
 
-.body .count {
+.section_taches .count {
     margin-right: 5%;
     font-size: calc(var(--taille-texte) * 0.5);
     color: var(--texte-count);
 }
 
-.body .dropzone{
+.section_taches .dropzone{
     flex-grow: 1;
     height: auto;
     display: flex;
