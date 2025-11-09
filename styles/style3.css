@@ -51,8 +51,6 @@
 
 .body{
     width: 90%;
-    transform: translateX(5%);
-    gap: 12px;
     background-color: black;
 }
 
