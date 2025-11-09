@@ -267,9 +267,9 @@
 
 .section_cameras {
     position: relative;
-    margin-bottom: 10%;
+    margin-bottom: 10px;
     width: 90%;
-    transform: translateX(-50%);
+    transform: translateX(5%);
     background-color: var(--colone);
     border-radius: 20%;
     height: 78%;
