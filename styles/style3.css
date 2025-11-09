@@ -4,6 +4,7 @@
     --texte: #111111;
     --texte-count: #6b7280
     --bg-bandeau: #0091d4;
+    --bg-menu: #007db8;
 
     --taille-texte: 120%;
     
@@ -33,4 +34,19 @@
     border: 1px solid #e6eef2;
     background: var(--bg);
     font-size: calc(var(--taille-texte) * 0.5);
+}
+
+
+
+.barreOutil button {
+    width: 10%;
+    border-radius: 8px;
+    border: 1px solid #e6eef2;
+    height: 100%;
+    background-color: var(--bg);
+    margin-bottom: 2%;
+}
+
+.barreOutil button:hover {
+    background-color: var(--bg-menu);
 }
