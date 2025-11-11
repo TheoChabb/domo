@@ -123,6 +123,8 @@ function afficherContextMenu(idTache, event, user) {
     contextMenu.style.top = event.clientY + "px";
     contextMenu.style.left = event.clientX + "px";
 
+    alert("toto");
+
     supprimerTacheBtn.onclick = function() {
         supprimerTache(idTache, user);
     };
