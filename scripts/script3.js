@@ -11,9 +11,9 @@ async function getUrl(url) {
 chargerTaches('Theo')
 
 async function chargerTaches(user){
-    fichUser = await getUrl("data/taches/users.json");
-    fichMainData = await getUrl("data/taches/main_data.json");
-    fichData = await getUrl("data/taches/data_taches.json");
+    fichUser = await getUrl("http://domo.theo.free.fr/data_github/users.json");
+    fichMainData = await getUrl("http://domo.theo.free.fr/data_github/main_data.json");
+    fichData = await getUrl("http://domo.theo.free.fr/data_github/data_taches.json");
     
     for(section in fichMainData.body){
         idSection = "section_" + fichMainData.body[section].id;
@@ -68,7 +68,7 @@ function ajouterTache(user) {
 
     const data = { action: "add", user, colonne, texte };
 
-    fetch("sauvegarde.php", {
+    fetch("http://domo.theo.free.fr/sauvegarde.php", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data)
@@ -87,7 +87,7 @@ function supprimerTache(id, user) {
 
     const data = { action: "delete", id: parseInt(id, 10), user: userSupp };
 
-    fetch("sauvegarde.php", {
+    fetch("http://domo.theo.free.fr/sauvegarde.php", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data)
@@ -154,7 +154,7 @@ async function chargerCompteur(user) {
 }
 
 async function afficherPopupModifierTache(idTache, user) {
-    fichData = await getUrl("data/taches/data_taches.json");
+    fichData = await getUrl("http://domo.theo.free.fr/data_github/data_taches.json");
 
     const popup = document.getElementById("popup");
     const popupContent = document.getElementById("popup-content");
@@ -208,7 +208,7 @@ function modifierTache(lastTache, user, idTache) {
 
     const data = { action: "edit", id: parseInt(idTache, 10), texte: nouveauTexte, modifieur: user };
 
-    fetch("sauvegarde.php", {
+    fetch("http://domo.theo.free.fr/sauvegarde.php", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data)
@@ -220,7 +220,7 @@ function modifierTache(lastTache, user, idTache) {
 }
 
 async function afficherPopupHistoriqueTache(idTache, user){
-    fichData = await getUrl("data/taches/data_taches.json");
+    fichData = await getUrl("http://domo.theo.free.fr/data_github/data_taches.json");
 
     const popupHistorique = document.getElementById("popupHistorique");
     const popupContentHistorique = document.getElementById("popup-contentHistorique");
@@ -250,7 +250,7 @@ function closePopupHistorique(){
 async function historiqueTache(idTache, user) {
     const id = idTache;
 
-    fetch("sauvegarde.php?action=history&id=" + id)
+    fetch("http://domo.theo.free.fr/sauvegarde.php?action=history&id=" + id)
         .then(res => res.json())
         .then(hist => {
             if (!hist || hist.length === 0) {
@@ -273,7 +273,7 @@ async function historiqueTache(idTache, user) {
 }
 
 async function findNewFichData() {
-    return await getUrl("data/taches/data_taches.json");
+    return await getUrl("http://domo.theo.free.fr/data_github/data_taches.json");
 }
 
 setInterval(async () => {
