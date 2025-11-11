@@ -68,7 +68,7 @@ function ajouterTache(user) {
 
     const data = { action: "add", user, colonne, texte };
 
-    fetch("http://domo.theo.free.fr/sauvegarde.php", {
+    fetch("https://corsproxy.io/?http://domo.theo.free.fr/sauvegarde.php", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data)
@@ -87,7 +87,7 @@ function supprimerTache(id, user) {
 
     const data = { action: "delete", id: parseInt(id, 10), user: userSupp };
 
-    fetch("http://domo.theo.free.fr/sauvegarde.php", {
+    fetch("https://corsproxy.io/?http://domo.theo.free.fr/sauvegarde.php", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data)
@@ -208,7 +208,7 @@ function modifierTache(lastTache, user, idTache) {
 
     const data = { action: "edit", id: parseInt(idTache, 10), texte: nouveauTexte, modifieur: user };
 
-    fetch("http://domo.theo.free.fr/sauvegarde.php", {
+    fetch("https://corsproxy.io/?http://domo.theo.free.fr/sauvegarde.php", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data)
@@ -250,7 +250,7 @@ function closePopupHistorique(){
 async function historiqueTache(idTache, user) {
     const id = idTache;
 
-    fetch("http://domo.theo.free.fr/sauvegarde.php?action=history&id=" + id)
+    fetch("https://corsproxy.io/?http://domo.theo.free.fr/sauvegarde.php?action=history&id=" + id)
         .then(res => res.json())
         .then(hist => {
             if (!hist || hist.length === 0) {
