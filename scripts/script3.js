@@ -1,6 +1,6 @@
 async function getUrl(url) {
     try {
-        const response = await fetch(url);
+        const response = await fetch("https://corsproxy.io/?" + url);
         const data = await response.json();
         return(data);
     } catch (error) {
