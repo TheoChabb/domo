@@ -281,5 +281,6 @@
     border-radius: 8px;
     background-color: var(--bg-bandeau);
     left: 50%;
+    cursor: pointer;
 }
 
