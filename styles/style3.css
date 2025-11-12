@@ -276,10 +276,9 @@
 
 .imgRefreshTaches {
     position: relative;
-    height: 5%;
+    height: 7%;
     border-radius: 8px;
     background-color: var(--bg-bandeau);
-    justify-content: flex-end;
-    right: 5%;
+    left: 50%;
 }
 
