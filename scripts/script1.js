@@ -30,13 +30,14 @@ auth.onAuthStateChanged(async user => {
   if(user.email == "theochbrt@gmail.com") {
     username = "Admin";
   }
-  localStorage.removeItem('user');
   localStorage.setItem('user', username);
   //alert(user.email);
 });
 
 async function logout() {
   const user = auth.currentUser;
+  
+  localStorage.removeItem('user');
 
   if (user) {
     const msg = `Déconnexion effectuée pour le compte : ${user.email}\nHeure : ${new Date().toLocaleString()}`;
