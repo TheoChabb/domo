@@ -88,8 +88,8 @@
             </div>
             <div class="section taches" id="section_tache">
                 <div id="barreOutil" class="barreOutil">
-                    <input id="nomTache" class="entreText" type="text" placeholder="Titre de la tache" onkeydown="envoyer(event, 'add', 'Theo')">
-                    <select id="selectColonne" class="select" onkeydown="envoyer(event, 'add', 'Theo')">
+                    <input id="nomTache" class="entreText" type="text" placeholder="Titre de la tache">
+                    <select id="selectColonne" class="select">
                         <option value="" disabled seleted>-- Jour --</option>
                         <option value="lundi">Lundi</option>
                         <option value="mardi">Mardi</option>
@@ -99,8 +99,8 @@
                         <option value="samedi">Samedi</option>
                         <option value="dimanche">Dimanche</option>
                     </select>
-                    <button id="boutonAjouter" onclick="ajouterTache('Theo')">Ajouter la tâche</button>
-                    <a onclick="refreshTaches('Theo')"><img class="imgRefreshTaches" src="images/imgRefreshTaches.png"></a>
+                    <button id="boutonAjouter">Ajouter la tâche</button>
+                    <a id="boutonRefresh"><img class="imgRefreshTaches" src="images/imgRefreshTaches.png"></a>
                 </div>
                 <div id="body" class="body">
                     <section class="section" id="lundi">
