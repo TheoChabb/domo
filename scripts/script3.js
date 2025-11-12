@@ -303,5 +303,5 @@ function refreshTaches(user) {
 
     setTimeout(1000);
 
-    chrgerTaches(user);
+    chargerTaches(user);
 }
