@@ -5,6 +5,8 @@ window.onload = function() {
         top: 0 * sectionHeight,
         behavior: 'smooth'
     });
+
+    putUser();
 };
 
 function toggleMenu() {
@@ -31,4 +33,9 @@ function changeSection(index) {
   currentIndex = index;
   container.style.transform = `translateY(-${index * 100}%)`;
   toggleMenu();
+}
+
+function putUser() {
+    let user = localStorage.getItem('user');
+    alert(user);
 }
