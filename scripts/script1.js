@@ -24,8 +24,13 @@ auth.onAuthStateChanged(async user => {
   const message = `Nouvelle connexion réussie sur votre espace domotique.\nCompte : ${user.email}\nHeure : ${new Date().toLocaleString()}`;
   await sendMail("Nouvelle connexion !", "domo@contact.fr", message, user.email);
 
-  
-  localStorage.setItem('user', user.email);
+  if(user.email == "theo.chabbert.31@gmail.com") {
+    username = "Theo";
+  }
+  if(user.email == "theochbrt@gmail.com") {
+    theochbrt = "Admin";
+  }
+  localStorage.setItem('user', username);
   //alert(user.email);
 });
 
