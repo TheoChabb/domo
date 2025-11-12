@@ -17,6 +17,7 @@
     padding-bottom: calc(var(--height-barreOutilTache)/2);
     background-color: var(--bg-bandeau);
     padding-left: 5%;
+    height: 5%;
     text-align: left;
 }
 
