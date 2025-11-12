@@ -275,9 +275,10 @@
 }
 
 .barreOutil button {
+    position: absolute; 
+    height: 5%; 
     width: 3%;
     border-radius: 8px;
     background-color: var(--bg-bandeau);
-    padding: 0.5em 0.7em;
     right: 5%;
 }
