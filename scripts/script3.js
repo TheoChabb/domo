@@ -291,3 +291,17 @@ setInterval(async () => {
         chargerTaches(user);
     }
 }, 1000);
+
+function refreshTaches(user) {
+    document.getElementById("section_lundi").ineerHTML = null;
+    document.getElementById("section_mardi").ineerHTML = null;
+    document.getElementById("section_mercredi").ineerHTML = null;
+    document.getElementById("section_jeudi").ineerHTML = null;
+    document.getElementById("section_vendredi").ineerHTML = null;
+    document.getElementById("section_samedi").ineerHTML = null;
+    document.getElementById("section_dimanche").ineerHTML = null;
+
+    setTimeout(1000);
+
+    chrgerTaches(user);
+}
