@@ -30,6 +30,7 @@ auth.onAuthStateChanged(async user => {
   if(user.email == "theochbrt@gmail.com") {
     username = "Admin";
   }
+  localStorage.removeItem('user');
   localStorage.setItem('user', username);
   //alert(user.email);
 });
