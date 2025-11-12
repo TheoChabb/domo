@@ -5,6 +5,8 @@ window.onload = function() {
         top: 0 * sectionHeight,
         behavior: 'smooth'
     });
+
+    putUser();
 };
 
 function toggleMenu() {
@@ -57,5 +59,3 @@ function putUser() {
         refreshTaches(user);
     });
 }
-
-putUser();
