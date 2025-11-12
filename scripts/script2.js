@@ -37,5 +37,25 @@ function changeSection(index) {
 
 function putUser() {
     let user = localStorage.getItem('user');
-    alert(user);
+    //alert(user);
+    
+    const input = document.getElementById("nomTache");
+    input.addEventListener("keydown", function(event) {
+        envoyer(event, 'add', user); // Utilise la variable ici
+    });
+    
+    const select = document.getElementById("selectColonne");
+    select.addEventListener("keydown", function(event) {
+        envoyer(event, 'add', user); // Utilise la variable ici
+    });
+    
+    const button = document.getElementById("boutonAjouter");
+    button.addEventListener("keydown", function(event) {
+        ajouterTache(user); // Utilise la variable ici
+    });
+    
+    const buttonRefresh = document.getElementById("boutonRefresh");
+    buttonRefresh.addEventListener("keydown", function(event) {
+        refreshTaches(user);
+    });
 }
