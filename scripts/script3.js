@@ -76,7 +76,7 @@ function ajouterTache(user) {
     .then(res => res.text())
         .then(msg => {
         if (msg) {
-            alert(msg);
+            //alert(msg);
         }});
     document.getElementById("nomTache").value = "";
 }
@@ -95,7 +95,7 @@ function supprimerTache(id, user) {
     .then(res => res.text())
     .then(msg => {
         if (msg) {
-            alert(msg);
+            //alert(msg);
         }});
 }
 
