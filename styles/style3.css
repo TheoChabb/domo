@@ -9,8 +9,6 @@
     --taille-texte: 120%;
     
     --height-barreOutilTache: 3%;
-
-    --height-btn-menu: 60%;
 }
 
 #section_tache .barreOutil{
@@ -278,8 +276,5 @@
 
 .imgRefreshTachaes {
     right: 5%;
-    height: var(--height-btn-menu);
-    top: 20%;
     background-color: var(--bg-bandeau);
-    z-index: 110;
 }
