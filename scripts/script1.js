@@ -25,7 +25,8 @@ auth.onAuthStateChanged(async user => {
   await sendMail("Nouvelle connexion !", "domo@contact.fr", message, user.email);
 
   
-  alert(user.email);
+  localStorage.setItem('user', user.email);
+  //alert(user.email);
 });
 
 async function logout() {
