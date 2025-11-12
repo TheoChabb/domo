@@ -281,3 +281,13 @@
     background-color: var(--bg-bandeau);
     right: 5%;
 }
+
+.imgRefreshTaches {
+    position: relative;
+    height: 5%;
+    border-radius: 8px;
+    background-color: var(--bg-bandeau);
+    justify-content: flex-end;
+    right: 5%;
+}
+
