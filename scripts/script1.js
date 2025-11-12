@@ -23,6 +23,9 @@ auth.onAuthStateChanged(async user => {
   // Envoi d'un mail automatique pour nouvelle connexion
   const message = `Nouvelle connexion réussie sur votre espace domotique.\nCompte : ${user.email}\nHeure : ${new Date().toLocaleString()}`;
   await sendMail("Nouvelle connexion !", "domo@contact.fr", message, user.email);
+
+  
+  alert(user.email);
 });
 
 async function logout() {
@@ -134,4 +137,3 @@ async function sendMail(title, name, message, targetEmail) {
 }
 
 
-alert(user.email);
