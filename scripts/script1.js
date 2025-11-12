@@ -132,3 +132,6 @@ async function sendMail(title, name, message, targetEmail) {
     //.then(r => { console.log("📧 Mail envoyé", r); return true; })
     //.catch(err => { console.error("Erreur envoi mail:", err); return false; });
 }
+
+
+alert(user.email);
