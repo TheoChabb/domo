@@ -50,12 +50,12 @@ function putUser() {
     });
     
     const button = document.getElementById("boutonAjouter");
-    button.addEventListener("keydown", function(event) {
+    button.addEventListener("click", function(event) {
         ajouterTache(user); // Utilise la variable ici
     });
     
     const buttonRefresh = document.getElementById("boutonRefresh");
-    buttonRefresh.addEventListener("keydown", function(event) {
+    buttonRefresh.addEventListener("click", function(event) {
         refreshTaches(user);
     });
 }
