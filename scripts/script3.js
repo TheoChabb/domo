@@ -41,8 +41,10 @@ async function chargerTaches(user){
                         '</div>' +
                     '</div>';
         //console.log(divTache + "\n\n");
-        
-        document.getElementById(colonneTache).innerHTML = document.getElementById(colonneTache).innerHTML + divTache;
+
+        if(divTache !== null) {
+            document.getElementById(colonneTache).innerHTML = document.getElementById(colonneTache).innerHTML + divTache;
+        }
     }
 
     // Charger le conteur
