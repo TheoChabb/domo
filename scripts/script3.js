@@ -24,7 +24,8 @@ async function chargerTaches(user){
     localStorage.setItem("lastFichData", JSON.stringify(fichData));
 
     for(tache in fichData){
-        bgColor = "background-color: " + fichUser[fichData[tache].user].color + ";";
+        //bgColor = "background-color: " + fichUser[fichData[tache].user].color + ";";
+        bgColor == "#bae6fd";
         utilisateurMaj = fichUser[fichData[tache].user].name;
         colonneTache = "section_" + fichData[tache].colonne;
         idTache = fichData[tache].id;
