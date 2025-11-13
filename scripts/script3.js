@@ -26,7 +26,8 @@ async function chargerTaches(user){
     for(tache in fichData){
         //bgColor = "background-color: " + fichUser[fichData[tache].user].color + ";";
         bgColor = "background-color: " + "#bae6fd" + ";";
-        utilisateurMaj = fichUser[fichData[tache].user].name;
+        //utilisateurMaj = fichUser[fichData[tache].user].name;
+        utilisateurMaj = "Theo";
         colonneTache = "section_" + fichData[tache].colonne;
         idTache = fichData[tache].id;
         valueElement = fichData[tache].texte;
