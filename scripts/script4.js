@@ -20,4 +20,14 @@ function loadValue() {
         }
     };
     xhrHumi.send();
+
+    let xhrHumi = new XMLHttpRequest();
+    xhrButtonLampeChambre.open("GET", "https://corsproxy.io/?http://domo.theo.free.fr/data_github/statut_lampe_chambre.txt");
+    xhrButtonLampeChambre.onreadystatechange = function() {
+        if (xhrButtonLampeChambre.readyState === 4 && xhrButtonLampeChambre.status === 200) {
+            const lampeChambre = xhrButtonLampeChambre.responseText;
+            document.getElementById('lampeChambre').textContent = lampeChambre || "Chargement...";
+        }
+    };
+    xhrButtonLampeChambre.send();
 }
