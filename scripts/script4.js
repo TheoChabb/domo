@@ -34,7 +34,7 @@ function loadValue() {
 
 function updateStatus(place, state) {
   let xhr1 = new XMLHttpRequest();
-  xhr1.open("GET", `https://corsproxy.io/?http://domo.theo.free.fr/data_github/update_statuts.php?place=${place}&state=${state}`, true);
+  xhr1.open("GET", `https://corsproxy.io/?http://domo.theo.free.fr/update_statuts.php?place=${place}&state=${state}`, true);
   xhr1.onreadystatechange = function() {
       if (xhr1.readyState == 4 && xhr1.status == 200) {
           console.log("Statut mis Ã  jour :", xhr1.responseText);
