@@ -37,8 +37,21 @@ function updateStatus(place, state) {
   xhr1.open("GET", `https://corsproxy.io/?http://domo.theo.free.fr/update_statuts.php?place=${place}&state=${state}`, true);
   xhr1.onreadystatechange = function() {
       if (xhr1.readyState == 4 && xhr1.status == 200) {
-          console.log("Statut mis Ã  jour :", xhr1.responseText);
+          console.log("Statut mise a jour :", xhr1.responseText);
       }
   };
   xhr1.send();
+}
+
+function validerHeure(){
+    heure = document.getElementById("heureInput").value;
+
+    let xhr1 = new XMLHttpRequest();
+    xhr1.open("GET", `https://corsproxy.io/?http://domo.theo.free.fr/update_heure_reveil.php?heure=${heure}`, true);
+    xhr1.onreadystatechange = function() {
+        if (xhr1.readyState == 4 && xhr1.status == 200) {
+            console.log("Statut mise a jour :", xhr1.responseText);
+        }
+    };
+    xhr1.send();
 }
